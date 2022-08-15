@@ -31,8 +31,8 @@ resource "digitalocean_app" "iw1" {
 
       github {
         repo           = "xyrider0/IllustrationWebsite"
-        branch         = "main"
-        deploy_on_push = false
+        branch         = "release"
+        deploy_on_push = true
       }
 
       name              = "iw1"
