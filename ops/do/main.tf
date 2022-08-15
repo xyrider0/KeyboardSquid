@@ -11,8 +11,8 @@ data "digitalocean_ssh_key" "terraform" {
   name = "Ueno-ssh-0"
 }
 
-resource "digitalocean_domain" "samtest" {
-  name = "sfoster3.com"
+resource "digitalocean_domain" "pkae2illustrations" {
+  name = "pkae2illustrations.com"
 }
 
 
@@ -22,9 +22,9 @@ resource "digitalocean_app" "iw1" {
     region = "sfo"
 
     domain {
-      name = digitalocean_domain.samtest.name
+      name = digitalocean_domain.pkae2illustrations.name
       type = "PRIMARY"
-      zone = digitalocean_domain.samtest.name
+      zone = digitalocean_domain.pkae2illustrations.name
     }
 
     static_site {
@@ -47,5 +47,5 @@ resource "digitalocean_app" "iw1" {
 resource "digitalocean_project" "iw1" {
   name        = "Illustration Website v1"
   environment = "Development"
-  resources   = ["do:app:${digitalocean_app.iw1.id}", digitalocean_domain.samtest.urn]
+  resources   = ["do:app:${digitalocean_app.iw1.id}", digitalocean_domain.pkae2illustrations.urn]
 }
