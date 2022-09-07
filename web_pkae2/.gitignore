@@ -11,6 +11,9 @@
 # production
 /build
 
+# notes
+/src/components/CodeTemplate.js
+
 # misc
 .DS_Store
 .env.local
