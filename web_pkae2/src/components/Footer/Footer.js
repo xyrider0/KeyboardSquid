@@ -5,8 +5,8 @@ import { SocialIcon } from 'react-social-icons';
 
 export default function Footer() {
   return (
-    <MDBFooter bgColor='light' className='text-center text-lg-start text-muted'>
-      <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
+    <MDBFooter bgColor='light' className='fixed-bottom text-center text-lg-start text-muted'>
+      <section className='d-flex justify-content-center justify-content-lg-between mt-4 pb-2 border-bottom'>
         <MDBCol md="7" lg="7" xl="7" className='mx-auto'>
               <h6 className='text-uppercase fw-bold mb-4' align="center">
                 Socials
@@ -28,7 +28,7 @@ export default function Footer() {
                   <a href='' className='me-4 text-reset'>
                     <SocialIcon url="https://www.tiktok.com/@pkae_2" bgColor="#6c757d" style={{ top: -3, height: 17, width: 17 }}/>
                   </a>
-                  <a href='https://discord.gg/dgHa5Ttj' className='me-4 text-reset'>
+                  <a href='https://discord.gg/dgHa5Ttj' className='text-reset'>
                     <i class="fab fa-discord"></i>
                   </a>
                 </div>
@@ -37,40 +37,16 @@ export default function Footer() {
       </section>
 
       <section className=''>
-        <MDBContainer className='text-center text-md-start mt-5'>
+        <MDBContainer className='text-md-start mt container-fluid'>
           <MDBRow className='mt-3'>
-            <MDBCol md="5" lg="5" xl="5" className='mx-auto mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>
-                Pkae2 Illustrations
+            <MDBCol className='mx-auto mb-4'>
+              <h6 className='text-center text-uppercase fw-bold mb-1'>
+                Pkae2 Illustrations LLC
               </h6>
-              <p>
-                
-              </p>
-            </MDBCol>
-
-            <MDBCol md="5" lg="5" xl="5" className='mx-auto mb-md-0 mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
-              {/* <p>
-                <MDBIcon icon="home" className="me-2" />
-                CA, US
-              </p> */}
-              <p>
-                <MDBIcon icon="envelope" className="me-3" />
-                speaktopkae2@gmail.com
-              </p>
-              {/* <p>
-                <MDBIcon icon="phone" className="me-3" /> 
-              </p>
-              <p>
-                <MDBIcon icon="print" className="me-3" /> 
-              </p> */}
             </MDBCol>
           </MDBRow>
         </MDBContainer>
       </section>
-
-      <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
-      </div>
     </MDBFooter>
   );
 }
