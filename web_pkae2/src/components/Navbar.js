@@ -52,7 +52,7 @@ export default function Navbar() {
             <MDBNavbarItem>
               <MDBNavbarLink tag={Link} aria-current='page' to='merch'>
                   Merch
-              </MDBNavbarLink>`
+              </MDBNavbarLink>
             </MDBNavbarItem>
           </MDBNavbarNav>
         </MDBCollapse>
