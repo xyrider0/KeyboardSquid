@@ -9,7 +9,6 @@ import Carousel from './components/Carousel/Carousel';
 //css
 import style from './style.module.css';
 
-
 function App() {
   return (
     <>
@@ -17,8 +16,9 @@ function App() {
       <Navbar></Navbar>
     </div>
     <div className="App">
+      <Carousel></Carousel>
       <Outlet />
-      </div>
+    </div>
     <div className="Footer">
       <Footer></Footer>
     </div>
