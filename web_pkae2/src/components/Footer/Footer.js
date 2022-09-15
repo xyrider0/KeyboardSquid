@@ -28,7 +28,7 @@ export default function Footer() {
                   <a href='' className='me-4 text-reset'>
                     <SocialIcon url="https://www.tiktok.com/@pkae_2" bgColor="#6c757d" style={{ top: -3, height: 17, width: 17 }}/>
                   </a>
-                  <a href='https://discord.gg/dgHa5Ttj' className='text-reset'>
+                  <a href='https://discord.gg/z3PzTsY68X' className='text-reset'>
                     <i class="fab fa-discord"></i>
                   </a>
                 </div>
