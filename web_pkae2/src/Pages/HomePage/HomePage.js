@@ -5,6 +5,7 @@ import Intro from '../../components/Intro';
 export default function HomePage(){
     return (
         <>
+        <Carousel></Carousel>
         <Intro></Intro>
         </>
     );
