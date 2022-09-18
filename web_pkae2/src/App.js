@@ -13,7 +13,7 @@ function App() {
     <div className="Header">
       <Navbar></Navbar>
     </div>
-    <div className="App">
+    <div className={style.content}>
       <Outlet />
     </div>
     <div className="Footer">
