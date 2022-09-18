@@ -5,6 +5,16 @@ import {
   MDBCol
 } from 'mdb-react-ui-kit';
 import { MDBTypography } from 'mdb-react-ui-kit';
+import styles from './CommissionsPage.module.css';
+
+
+function importAll(r) {
+  let images = {};
+  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+  return images;
+}
+
+const images = importAll(require.context('../../Assets/images', false, /\.(png|jpe?g|svg)$/));
 
 export default function CommissionsPage() {
   return (
@@ -14,27 +24,38 @@ export default function CommissionsPage() {
   <hr />
   <MDBTypography variant='h4' className='text-center mt-5'>Illustrations</MDBTypography>
   <MDBTypography variant='p' className='text-center mb-2'>
-    Exclusivity (no reprints) +$50.
+    Exclusivity (*I don't sell additional prints) +$50.
   </MDBTypography>
   <MDBContainer className='text-md-start mt container-fluid'>
         <MDBRow className='mt-3'>
-            <MDBCol className='mx-auto mb-4'>
-            <h5 className='text-center text-uppercase fw-bold mb-1'>
-              Sketch (Color) <br/>
-              $20 ($30)
-            </h5>
-            </MDBCol>
-            <MDBCol className='mx-auto mb-4'>
+            <MDBCol className='mx-auto mb-3'>
             <h5 className='text-center text-uppercase fw-bold mb-1'>
               Half/Full Body <br/>
                   $75/$100
             </h5>
+            <img src={images['illust_seda.png']} className={styles.imageSample}>
+            </img>
+            <p className={styles.imageCaption}>Half Body + Average Background</p>
             </MDBCol>
-            <MDBCol className='mx-auto mb-4'>
+            <MDBCol className='mx-auto mb-6'>
             <h5 className='text-center text-uppercase fw-bold mb-1'>
                 Character Sheet <br/>
                 $300 (3 poses) + $75 each
             </h5>
+            <img src={images['chara_sheet_mona.png']} className={styles.imageSample}>
+            </img>
+            <p className={styles.imageCaption}>Chara Sheet + Simple Background</p>
+            </MDBCol>
+            <MDBCol className='mx-auto mb-3'>
+            <h5 className='text-center text-uppercase fw-bold mb-1'>
+              Sketch (Color) <br/>
+              $20 ($30)
+            </h5>
+            <div>
+              <img src={images['sketch_eula.jpg']} className={styles.imageSample}>
+              </img>
+            </div>
+            <p className={styles.imageCaption}>Sketch + No Background</p>
             </MDBCol>
         </MDBRow>
     </MDBContainer>  
@@ -47,40 +68,31 @@ export default function CommissionsPage() {
               Simple <br/>
               +$10-30
             </h5>
+            <img src={images['sketch_koba.png']} className={styles.imageSample}>
+            </img>
+            <p className={styles.imageCaption}>Colored Sketch + Simple Background</p>
             </MDBCol>
             <MDBCol className='mx-auto mb-4'>
             <h5 className='text-center text-uppercase fw-bold mb-1'>
-              Wide Shot <br/>
+              Average <br/>
               +$35-50
             </h5>
+            <img src={images['illust_cecilia.png']} className={styles.imageSample}>
+            </img>
+            <p className={styles.imageCaption}>Half Body + Average Background</p>
             </MDBCol>
             <MDBCol className='mx-auto mb-4'>
             <h5 className='text-center text-uppercase fw-bold mb-1'>
               Complex <br/>
               +$50-100
             </h5>
+            <img src={images['illust_yoimiya.png']} className={styles.imageSample}>
+            </img>
+            <p className={styles.imageCaption}>Half Body + Complex Background</p>
             </MDBCol>
         </MDBRow>
     </MDBContainer>  
   </MDBTypography>
-  <hr />
-  <MDBTypography variant='h4' className='text-center mt-5'>Vtubers</MDBTypography>
-  <MDBContainer className='text-md-start mt container-fluid'>
-      <MDBRow className='mt-3'>
-          <MDBCol className='mx-auto mb-6'>
-          <h5 className='text-center text-uppercase fw-bold mb-1'>
-              Art <br/>
-              Closed
-          </h5>
-          </MDBCol>
-          <MDBCol className='mx-auto mb-6'>
-          <h5 className='text-center text-uppercase fw-bold mb-1'>
-              Rigging <br/>
-              Closed
-          </h5>
-          </MDBCol>
-      </MDBRow>
-  </MDBContainer>
   <hr />
   <MDBTypography variant='h4' className='text-center mt-5'>Emotes</MDBTypography>
   <section className='com-illustration'>
@@ -104,9 +116,51 @@ export default function CommissionsPage() {
                 $30-50 
             </h5>
             </MDBCol>
+            <img src={images['']} />
         </MDBRow>
     </MDBContainer>
     </section>  
+  <hr />
+  <MDBTypography variant='h4' className='text-center mt-5'>Vtubers (Closed)</MDBTypography>
+  <MDBContainer className='text-md-start mt container-fluid'>
+      <MDBRow className='mt-3'>
+          <MDBCol className='mx-auto mb-6'>
+          <h5 className='text-center text-uppercase fw-bold mb-1'>
+              Art <br/>
+          </h5>
+          </MDBCol>
+          <MDBCol className='mx-auto mb-6'>
+          <h5 className='text-center text-uppercase fw-bold mb-1'>
+              Rigging <br/>
+          </h5>
+          </MDBCol>
+      </MDBRow>
+      <MDBRow className='mt-3'>
+          <MDBCol className='mx-auto mb-3'>
+          <image>
+
+          </image>
+          <h5 className='text-center text-uppercase fw-bold mb-1'>
+              Bust <br/>
+          </h5>
+          </MDBCol>
+          <MDBCol className='mx-auto mb-3'>
+          <h5 className='text-center text-uppercase fw-bold mb-1'>
+              Full Body <br/>
+          </h5>
+          </MDBCol>
+          <MDBCol className='mx-auto mb-3'>
+          <h5 className='text-center text-uppercase fw-bold mb-1'>
+              Bust <br/>
+          </h5>
+          </MDBCol>
+          <MDBCol className='mx-auto mb-3'>
+          <h5 className='text-center text-uppercase fw-bold mb-1'>
+              Full Body <br/>
+          </h5>
+          </MDBCol>
+      </MDBRow>
+  </MDBContainer>
   <hr />
   </>
 
