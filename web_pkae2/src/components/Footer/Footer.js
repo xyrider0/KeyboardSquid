@@ -16,7 +16,7 @@ export default function Footer() {
                   <a href='https://twitch.tv/pkae_2' className='me-4 text-reset'>
                     <i class="fab fa-twitch"></i>
                   </a>
-                  <a href='https://twitter.com/2_pkae' className='me-4 text-reset'>
+                  <a href='https://twitter.com/pkae_2' className='me-4 text-reset'>
                     <i class="fab fa-twitter"></i>
                   </a>
                   <a href='https://www.pixiv.net/en/users/10313151' className='me-4 text-reset'>
