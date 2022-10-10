@@ -20,7 +20,7 @@ export default function CommissionsPage() {
   return (
   <>
   <MDBTypography variant='h1' className='text-center mt-5'>Commissions</MDBTypography>
-  <MDBTypography variant='h4' className='text-center mb-0'></MDBTypography>
+  <MDBTypography variant='h4' className='text-center mb-0'>Email: speaktopkae2@gmail.com </MDBTypography>
   <hr />
   <MDBTypography variant='h2' className='text-center mt-5'>Illustrations</MDBTypography>
   <MDBTypography variant='p' className='text-center mb-2'>
