@@ -15,22 +15,22 @@ export default function Footer() {
               <p align="center">
                 <div>
                   <a href='https://twitch.tv/pkae_2' className={styles.footer + ' me-4 text-reset'}>
-                    <i class="fab fa-twitch"></i>
+                    <i className="fab fa-twitch"></i>
                   </a>
                   <a href='https://twitter.com/pkae_2' className={styles.footer + ' me-4 text-reset'}>
-                    <i class="fab fa-twitter"></i>
+                    <i className="fab fa-twitter"></i>
                   </a>
                   <a href='https://www.pixiv.net/en/users/10313151' className={styles.footer + ' me-4 text-reset'}>
                     <PixivIcon></PixivIcon>
                   </a>
                   <a href='https://www.instagram.com/pkae_2/' className={styles.footer + ' me-4 text-reset'}>
-                    <i class="fab fa-instagram"></i>
+                    <i className="fab fa-instagram"></i>
                   </a>
                   <a href='' className={styles.footer + ' me-4 text-reset'}>
                     <SocialIcon url="https://www.tiktok.com/@pkae_2" bgColor="#6c757d" style={{ top: -3, height: 17, width: 17 }}/>
                   </a>
                   <a href='https://discord.gg/z3PzTsY68X' className={styles.footer + ' text-reset'}>
-                    <i class="fab fa-discord"></i>
+                    <i className="fab fa-discord"></i>
                   </a>
                 </div>
               </p>

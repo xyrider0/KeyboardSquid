@@ -7,7 +7,6 @@ function PixivIcon() {
       viewBox="0 30 240 350"
       height = "20px"
       width = "20px"
-      top = "-2px"
       version="1.1"
     >
       <g transform="translate(0 -752.362)">
