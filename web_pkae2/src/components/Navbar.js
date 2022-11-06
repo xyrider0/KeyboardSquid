@@ -16,7 +16,7 @@ export default function Navbar() {
   const [showNavLeft, setShowNavLeft] = useState(false);
 
   return (
-    <MDBNavbar expand='sm' light bgColor='light'>
+    <MDBNavbar expand='lg' light bgColor='light'>
       <MDBContainer fluid>
         <MDBNavbarToggler
           type='button'
