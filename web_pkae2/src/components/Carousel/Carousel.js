@@ -14,7 +14,7 @@ import gallery from './GalleryBanner.png';
 export default function Carousel() {
   return (
       <MDBContainer className="mb-3 mt-3">
-          <MDBCarousel showControls showIndicators className="col-lg-8 offset-lg-2">
+          <MDBCarousel showControls showIndicators className="col-m-8 offset-m-2">
           <Link to='gallery'>
             <MDBCarouselItem
               className='w-100 d-sm-block'

@@ -11,13 +11,13 @@ function App() {
   return (
     <>
     <div className="Header">
-      <Navbar></Navbar>
+      <Navbar/>
     </div>
     <div className={style.content}>
       <Outlet />
     </div>
     <div className="Footer">
-      <Footer></Footer>
+      <Footer/>
     </div>
     </>
     )

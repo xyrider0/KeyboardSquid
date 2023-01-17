@@ -8,18 +8,15 @@ import {
   MDBNavbarItem,
   MDBNavbarLink,
   MDBNavbarToggler,
-  MDBCollapse,
-  MDBDropdown,
-  MDBDropdownMenu,
-  MDBDropdownToggle,
-  MDBDropdownItem,
+  MDBCollapse
 } from 'mdb-react-ui-kit';
+import styles from './Navbar.module.css';
 
 export default function Navbar() {
   const [showNavLeft, setShowNavLeft] = useState(false);
 
   return (
-    <MDBNavbar expand='sm' light bgColor='light'>
+    <MDBNavbar expand='lg' light bgColor='light'>
       <MDBContainer fluid>
         <MDBNavbarToggler
           type='button'
@@ -35,23 +32,23 @@ export default function Navbar() {
         <MDBCollapse navbar show={showNavLeft}>
           <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
             <MDBNavbarItem>
-              <MDBNavbarLink tag={Link} aria-current='page' to='/'>
-                  Home
+              <MDBNavbarLink className={styles.navbar + ' me-4'} tag={Link} aria-current='page' to='/'>
+                  Home 
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink tag={Link} aria-current='page' to='gallery'>
-                  Gallery
+              <MDBNavbarLink className={styles.navbar  + ' me-4'}  tag={Link} aria-current='page' to='gallery'>
+                  Gallery 
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink tag={Link} aria-current='page' to='commissions'>
-                  Commissions
+              <MDBNavbarLink className={styles.navbar  + ' me-4'} tag={Link} aria-current='page' to='commissions'>
+                  Commissions 
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink tag={Link} aria-current='page' to='merch'>
-                  Merch
+              <MDBNavbarLink className={styles.navbar + ' me-4'} tag={Link} aria-current='page' to='merch'>
+                  Merch 
               </MDBNavbarLink>
             </MDBNavbarItem>
           </MDBNavbarNav>
