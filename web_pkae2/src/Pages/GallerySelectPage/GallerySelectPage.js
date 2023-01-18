@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import gallery from "../../Assets/gallery";
 import {useNavigate, useParams} from "react-router-dom";
+import styles from './GallerySelectPage.module.css';
 
 export default function GalleryPage() {
   const {id} = useParams();
@@ -23,7 +24,7 @@ export default function GalleryPage() {
     <>
       <h5>{title}</h5>
       <div>{prompt}</div>
-      <img src={slideArray[slide]} onClick={advanceSlide}/>
+      <img src={slideArray[slide]} className={styles.imageSample} onClick={advanceSlide}/>
     </>
   );
 }

@@ -5,8 +5,8 @@ function PixivIcon() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 30 240 350"
-      height = "20px"
-      width = "20px"
+      height = "16px"
+      width = "16px"
       version="1.1"
     >
       <g transform="translate(0 -752.362)">
