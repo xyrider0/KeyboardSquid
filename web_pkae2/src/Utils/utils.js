@@ -11,3 +11,14 @@ export function importAll(r) {
   r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
   return images;
 }
+
+export default class Rectangle{
+  constructor(width, height){
+      this.x = width;
+      this.y = height;
+  }
+
+  multX(num){
+    return new Rectangle(this.x * num, this.y);
+  }
+}

@@ -1,0 +1,22 @@
+.imageSample {
+    display: block;
+    height: auto;
+    width: auto;
+    max-width: 5000px;
+    margin: auto;
+    object-fit: contain;
+}
+
+.imageCaption{
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+
+.imagePreview{
+    display: block;
+    height: auto;
+    width: 1000px;
+    margin: auto;
+    object-fit: fill;
+}
