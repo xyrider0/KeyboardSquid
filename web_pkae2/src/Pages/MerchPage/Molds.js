@@ -18,12 +18,13 @@ function createKeys(dict, dictKeys, xstart, centerY, spacingX, keySize){
     }
 
 
+    
 export default class CherryProfileMold{
     constructor(){
         //Creates Mold Print from preview
 
         // A3 Dimensions
-        const mold = new Rectangle(4950, 3510);
+        this.size = new Rectangle(4950, 3510);
 
         // keycap print sizes for different rows on keyboard
         this.keySizes = {
@@ -80,8 +81,55 @@ export default class CherryProfileMold{
         createKeys(this.keyPropsMold2, ['LCtrl', 'Win', 'LAlt', 'RAlt', 'Fn', 'App', 'RCtrl'], mold2startX+28, 2562, 540, this.keySizes['r1 1.25']);// Mold Row 6
         createKeys(this.keyPropsMold2, ['Caps'], 4323, 2562, 0, this.keySizes['r1 1.75']);// Mold Row 6
         createKeys(this.keyPropsMold2, ['Caps2'], mold2startX, 2975, 0, this.keySizes['r2 1.75']);// Mold Row 7
-        createKeys(this.keyPropsMold2, ['Num+'], 1189, 2975, 0, this.keySizes['+']);// Mold Row 7
+        createKeys(this.keyPropsMold2, ['Num+'], 1389, 2975, 0, this.keySizes['+']);// Mold Row 7
         createKeys(this.keyPropsMold2, ['NumEnter'], 2409, 2975, 0, this.keySizes['NumEnter']);// Mold Row 7
         createKeys(this.keyPropsMold2, ['Space'], 3796, 2975, 0, this.keySizes['r1 6.25']);// Mold Row 7
+    }
+
+    // Function for creating the actual print for the sublimation dying on molds
+    // Draws on HTML canvas to the dimensions required for the sublimation
+    createMold(keyProps, imageDataDic){
+        const canvas = document.createElement('canvas');
+        canvas.width = this.size.x;
+        canvas.height = this.size.y;
+        const ctx = canvas.getContext('2d')
+        ctx.fillStyle = 'transparent';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        for (let [key, value] of Object.entries(keyProps)){
+        const imageData = imageDataDic[key]
+        if(imageData){
+            if (['NumEnter', 'Num+'].includes(key)){
+                const tempCanvas = document.createElement('canvas')
+                const tempCtx = tempCanvas.getContext('2d', {willReadFrequently: true})
+                tempCanvas.width = imageData.width 
+                tempCanvas.height = imageData.height 
+                tempCtx.putImageData(imageData, 0, 0)
+                console.log(tempCanvas.width, tempCanvas.height, imageData.width, imageData.height)
+                ctx.save()
+                ctx.translate(value['center'].x, value['center'].y)
+                ctx.rotate(-Math.PI/2)
+                ctx.drawImage(tempCanvas, 0, 0, imageData.width, imageData.height, -imageData.width/2, -imageData.height/2, imageData.width, imageData.height)
+                ctx.restore()
+            }
+            else{
+                ctx.putImageData(imageData, value['center'].x-imageData.width/2, value['center'].y-imageData.height/2)
+            }
+            
+        }
+        }
+
+        // Create Pins Locations
+        const circle_x = [265, 2477, 4692];
+        const circle_y = [60, 3447];
+        for(let i = 0; i < circle_x.length; i++){
+        for(let j = 0; j < circle_y.length; j++)
+        {
+            ctx.beginPath();
+            ctx.arc(circle_x[i], circle_y[j], 17, 0, 2 * Math.PI);
+            ctx.stroke();
+        }
+        }
+        const imageData = canvas.toDataURL('image/png');
+        return(imageData)
     }
 }
