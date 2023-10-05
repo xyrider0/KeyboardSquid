@@ -18,7 +18,7 @@ export default function Footer() {
           </MDBRow>
         </MDBContainer>
         <MDBCol md="7" lg="7" xl="7" className='mx-auto'>
-              <p align="center">
+              <div align="center">
                   <a href='https://twitch.tv/pkae_2' className={styles.footer + ' me-4 text-reset'}>
                     <i className="fab fa-twitch"></i>
                   </a>
@@ -31,13 +31,11 @@ export default function Footer() {
                   <a href='https://www.instagram.com/pkae_2/' className={styles.footer + ' me-4 text-reset'}>
                     <i className="fab fa-instagram"></i>
                   </a>
-                  <a href='' className={styles.footer + ' me-4 text-reset'}>
-                    <SocialIcon url="https://www.tiktok.com/@pkae_2" bgColor="#6c757d" style={{ top: -1.7, height: 12, width: 12 }}/>
-                  </a>
+                  <SocialIcon url="https://www.tiktok.com/@pkae_2" bgColor="#6c757d" style={{ top: -1.7, height: 12, width: 12 }} className={styles.footer + ' me-4 text-reset'}/>
                   <a href='https://discord.gg/z3PzTsY68X' className={styles.footer + ' text-reset'}>
                     <i className="fab fa-discord"></i>
                   </a>
-              </p>
+              </div>
             </MDBCol>
       </section>
     </MDBFooter>

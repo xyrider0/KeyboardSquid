@@ -104,7 +104,6 @@ export default class CherryProfileMold{
                 tempCanvas.width = imageData.width 
                 tempCanvas.height = imageData.height 
                 tempCtx.putImageData(imageData, 0, 0)
-                console.log(tempCanvas.width, tempCanvas.height, imageData.width, imageData.height)
                 ctx.save()
                 ctx.translate(value['center'].x, value['center'].y)
                 ctx.rotate(-Math.PI/2)
