@@ -51,6 +51,11 @@ export default function Navbar() {
                   Merch 
               </MDBNavbarLink>
             </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink className={styles.navbar + ' me-4'} tag={Link} aria-current='page' to='keyboard'>
+                  Keyboard
+              </MDBNavbarLink>
+            </MDBNavbarItem>
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>
