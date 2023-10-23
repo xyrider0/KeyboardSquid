@@ -1,4 +1,5 @@
 import Rectangle from '../../Utils/utils'
+import { draw_arrow } from '../../Utils/utils'
 
 
 // Function for creating a row of keys with similar sizing
@@ -88,7 +89,7 @@ export default class CherryProfileMold{
 
     // Function for creating the actual print for the sublimation dying on molds
     // Draws on HTML canvas to the dimensions required for the sublimation
-    createMold(keyProps, imageDataDic){
+    createMold(ctxImg, keyProps, imageDataDic){
         const canvas = document.createElement('canvas');
         canvas.width = this.size.x;
         canvas.height = this.size.y;
@@ -99,19 +100,14 @@ export default class CherryProfileMold{
         const imageData = imageDataDic[key]
         if(imageData){
             if (['NumEnter', 'Num+'].includes(key)){
-                const tempCanvas = document.createElement('canvas')
-                const tempCtx = tempCanvas.getContext('2d', {willReadFrequently: true})
-                tempCanvas.width = imageData.width 
-                tempCanvas.height = imageData.height 
-                tempCtx.putImageData(imageData, 0, 0)
                 ctx.save()
                 ctx.translate(value['center'].x, value['center'].y)
                 ctx.rotate(-Math.PI/2)
-                ctx.drawImage(tempCanvas, 0, 0, imageData.width, imageData.height, -imageData.width/2, -imageData.height/2, imageData.width, imageData.height)
+                ctx.drawImage(ctxImg, imageData['x'], imageData['y'], imageData['dx'], imageData['dy'], -imageData['dx']/2, -imageData['dy']/2, imageData['dx'], imageData['dy'])
                 ctx.restore()
             }
             else{
-                ctx.putImageData(imageData, value['center'].x-imageData.width/2, value['center'].y-imageData.height/2)
+                ctx.drawImage(ctxImg, imageData['x'], imageData['y'], imageData['dx'], imageData['dy'], value['center'].x-imageData['dx']/2, value['center'].y-imageData['dy']/2, imageData['dx'], imageData['dy'])
             }
             
         }
