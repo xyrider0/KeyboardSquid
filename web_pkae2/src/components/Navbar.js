@@ -37,23 +37,8 @@ export default function Navbar() {
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink className={styles.navbar  + ' me-4'}  tag={Link} aria-current='page' to='gallery'>
-                  Gallery 
-              </MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink className={styles.navbar  + ' me-4'} tag={Link} aria-current='page' to='commissions'>
-                  Commissions 
-              </MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
               <MDBNavbarLink className={styles.navbar + ' me-4'} tag={Link} aria-current='page' to='merch'>
                   Merch 
-              </MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink className={styles.navbar + ' me-4'} tag={Link} aria-current='page' to='keyboard'>
-                  Keyboard
               </MDBNavbarLink>
             </MDBNavbarItem>
           </MDBNavbarNav>

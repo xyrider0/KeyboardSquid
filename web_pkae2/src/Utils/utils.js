@@ -14,8 +14,8 @@ export function importAll(r) {
 
 export default class Rectangle{
   constructor(width, height){
-      this.x = width;
-      this.y = height;
+      this.x = Math.round(width);
+      this.y = Math.round(height);
   }
 
   multX(num){
@@ -56,7 +56,7 @@ export function createKeyText(keyLabel, ctx, xstart, ystart, font, fillStyle = '
   ctx.letterSpacing = "0px"
   ctx.textBaseline = "bottom"
   ctx.wordSpacing = "-8px"
-  let yoffset = {"bottom": -30, "middle": 0, "top": 30}
+  let yoffset = {"bottom": -20, "middle": 0, "top": 20}
   const customKeys = {'`': "`~", '1':'1!', '2': '2@', '3': '3#', '4': '4$', '5': '5%', '6': '6^', '7': '7&', '8': '8*', '9': '9(', '0': '0)', '-': '-_', '=': '=+',
               '[': '[{', ']': ']}', '\'': '\'\"', ';': ';:', ',': ',<', '.':'.>', '/':'/?', 'LCtrl':'Ctrl', 'RCtrl': 'Ctrl', 'LAlt': 'Alt', 'RAlt': 'Alt',
               'NumLock': 'Num', 'Num/': '/', 'Num*': '*', 'Num-': '-', 'Num+':'+', 'Num1': '1', 'Num2':'2', 'Num3':'3', 'Num4':'4', 'Num5':'5', 'Num6':'6', 'Num7': '7', 'Num8': '8',
@@ -65,8 +65,8 @@ export function createKeyText(keyLabel, ctx, xstart, ystart, font, fillStyle = '
   const specialKeys = ['Backspace', 'Enter', 'Up', 'Down', 'Left', 'Right', 'NumDel', 'Space', '\\']
 
   if(specialKeys.includes(keyLabel)){
-    let len = 15
-    let width = 18
+    let len = 12
+    let width = 15
     let head_len = width
     if (keyLabel == 'Left'){
       draw_arrow(ctx, xstart, ystart + yoffset[ctx.textBaseline], xstart - 1.5 * len, ystart + yoffset[ctx.textBaseline], width, head_len)
@@ -124,23 +124,36 @@ export function createKeyText(keyLabel, ctx, xstart, ystart, font, fillStyle = '
 
 // Function for creating keyboard sized image
 // Draws on HTML canvas to create preview of what keyboard will look like
-export function createKeyRow(dictIn, dictKeys, canvasIn, canvasOut, keySize, x_init, y_init, pct_overlap, spacing, fillStyle, lengthmod = 1, lengthmody = 1, font='52px serif'){
+export function createKeyRow(dictIn, dictKeys, canvasIn, canvasOut, keyProps, x_init, y_init, pct_overlap, spacing, fillStyle, lengthmod = 1, lengthmody = 1, font='42px serif', faceonly=0){
     // dictIn = dictionary to store image data in for print
     // dictKeys = array of keys being inputted to store in dictIN
     // canvasIn = html canvas original image is on
     // canvasOut = html canvas to put image preview
-    // keySize = Dimensions of standard (regular num/letter), single key print with properties x, y
+    // KeyProps: 
+    //    size = Dimensions of standard (regular num/letter), single key print with properties x, y
+    //    keyFace = Dimensions of standard (regular num/letter), single key print face (without sloped edges) with properties x, y
+    //    keySlopeOneSide = Dimensions of standard (regular num/letter), single key print sloped edge (one side) with properties x, y
     // xstart = Horizontal Pixel location to grab from original image
     // ystart = Vertical Pixel location to grab from original image
     // overlap = percentage of overlap between keys to adjust starting location of next keys
     // spacing = percentage gap between key faces (not to scale) (percent of empty space between keys proportional to size of key face)
-    const xoverlap = pct_overlap * keySize.x
-    const yoverlap = pct_overlap * keySize.y
-
+    let size = new Rectangle(0,0)
+    let xoffset = 0
+    if(faceonly){
+      size = keyProps.keyFace
+      xoffset = keyProps.keySlopeOneSide.x
+    }
+    else{
+      size = keyProps.keySize
+    }
+    
+    const xoverlap = pct_overlap * size.x
+    const yoverlap = pct_overlap * size.y
+    
     for(let i = 0; i < dictKeys.length; i++){
-        const width = lengthmod * keySize.x - 2 * spacing
-        const height = lengthmody * keySize.y - 2 * spacing
-        const xstart = x_init + i * keySize.x + spacing
+        const width = lengthmod * size.x - 2 * spacing + (lengthmod-1) * xoffset *2
+        const height = lengthmody * size.y - 2 * spacing
+        const xstart = x_init + i * keyProps.keySize.x + spacing + xoffset
         const ystart = y_init + spacing
         const keyLabel = dictKeys[i]
 

@@ -3,6 +3,7 @@
     height: auto;
     width: auto;
     max-width: 1000px;
+    max-height: 1000px;
     margin: auto;
     object-fit: contain;
 }
@@ -16,7 +17,7 @@
 .imagePreview{
     display: block;
     height: auto;
-    width: 1000px;
+    max-width: 1000px;
     margin: auto;
     object-fit: fill;
 }

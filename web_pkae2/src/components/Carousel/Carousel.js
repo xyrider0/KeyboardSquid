@@ -24,24 +24,7 @@ export default function Carousel() {
             >
             </MDBCarouselItem>
           </Link>
-          <Link to='commissions'>
-            <MDBCarouselItem
-              className='w-100 d-sm-block'
-              itemId={2}
-              src={commissions}
-              alt='...'
-            >
-            </MDBCarouselItem>
-          </Link>
-          <Link to='merch'>
-            <MDBCarouselItem
-              className='w-100 d-sm-block'
-              itemId={3}
-              src={merch}
-              alt='...'
-            >
-            </MDBCarouselItem>
-          </Link>
+
           </MDBCarousel>
       </MDBContainer>
   );
