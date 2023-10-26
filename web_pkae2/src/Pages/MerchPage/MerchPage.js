@@ -52,8 +52,9 @@ export default function MerchPage(){
 
       ctx.imageSmoothingQuality = 'high';
 
-      const keyFace = new Rectangle(189, 217) // Chosen so mold left and righ edges align at 0 overlap :3
-      const keySlopeOneSide = {x: Math.round(0.2255 * keyFace.x), yTop: Math.round(0.0714 * keyFace.y), yBot: Math.round(0.142857 * keyFace.y)}
+      // 11.8 px / cm
+      const keyFace = new Rectangle(142, 165) // Chosen so mold left and righ edges align at 0 overlap :3
+      const keySlopeOneSide = {x: Math.round(0.25 * keyFace.x), yTop: Math.round(0.0714 * keyFace.y), yBot: Math.round(0.142857 * keyFace.y)}
       const spacing = new Rectangle(0.1322 * keyFace.x, 0.0714 * keyFace.y);
       const keySize = new Rectangle(keyFace.x + 2*keySlopeOneSide.x, keyFace.y + keySlopeOneSide.yTop + keySlopeOneSide.yBot)
       const functionspace  = 4 * spacing.y // Space between function keys and first row
@@ -104,22 +105,22 @@ export default function MerchPage(){
       // Row 1
       var rowheight = 0.5 * keySize.y;
       if (["Full", "TKL"].includes(aspectSelection)){
-        createKeyRow(imageDataDic, ['Esc'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection);
-        createKeyRow(imageDataDic, ['F1', 'F2', 'F3', 'F4'], ctx, ctx2, keyProps, 2.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection);
-        createKeyRow(imageDataDic, ['F5', 'F6', 'F7', 'F8'], ctx, ctx2, keyProps, 7 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection);
-        createKeyRow(imageDataDic, ['F9', 'F10', 'F11', 'F12'], ctx, ctx2, keyProps, 11.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection);
-        createKeyRow(imageDataDic, ['PrtSc', 'ScrLk', 'Pause'], ctx, ctx2, keyProps, 15.5 * keySize.x + functionspace, rowheight, overlap, spacing.x, fontColorSelection);
+        createKeyRow(imageDataDic, ['Esc'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection);
+        createKeyRow(imageDataDic, ['F1', 'F2', 'F3', 'F4'], ctx, ctx2, keyProps, 2.5 * keySize.x, rowheight, overlap, 0, fontColorSelection);
+        createKeyRow(imageDataDic, ['F5', 'F6', 'F7', 'F8'], ctx, ctx2, keyProps, 7 * keySize.x, rowheight, overlap, 0, fontColorSelection);
+        createKeyRow(imageDataDic, ['F9', 'F10', 'F11', 'F12'], ctx, ctx2, keyProps, 11.5 * keySize.x, rowheight, overlap, 0, fontColorSelection);
+        createKeyRow(imageDataDic, ['PrtSc', 'ScrLk', 'Pause'], ctx, ctx2, keyProps, 15.5 * keySize.x + functionspace, rowheight, overlap, 0, fontColorSelection);
         if (aspectSelection == "Full"){
-          createKeyRow(imageDataDic, ['VolDown', 'Music', 'Play', 'VolUp'], ctx, ctx2, keyProps, 18.5 * keySize.x + 2 * functionspace, rowheight, overlap, spacing.x, fontColorSelection);
+          createKeyRow(imageDataDic, ['VolDown', 'Music', 'Play', 'VolUp'], ctx, ctx2, keyProps, 18.5 * keySize.x + 2 * functionspace, rowheight, overlap, 0, fontColorSelection);
         }
       }
       if (aspectSelection == "75"){
         createKeyRow(imageDataDic, ['Esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'PrtSc', 'ScrLk', 'Pause'], 
-                                    ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1);
+                                    ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1);
       }
       if (aspectSelection == "Numpad")
       {
-        createKeyRow(imageDataDic, ['VolDown', 'Music', 'Play', 'VolUp'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection)
+        createKeyRow(imageDataDic, ['VolDown', 'Music', 'Play', 'VolUp'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection)
       }
       
 
@@ -135,23 +136,23 @@ export default function MerchPage(){
         var rowheight = 0.5 * keySize.y
       }
       if (aspectSelection != 'Numpad'){
-        createKeyRow(imageDataDic, ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '='], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection);
-        createKeyRow(imageDataDic, ['Backspace'], ctx, ctx2, keyProps, 13.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 2);
+        createKeyRow(imageDataDic, ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '='], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection);
+        createKeyRow(imageDataDic, ['Backspace'], ctx, ctx2, keyProps, 13.5 * keySize.x, rowheight, overlap, 0, fontColorSelection, 2);
         if(['75', '65'].includes(aspectSelection)){
-          createKeyRow(imageDataDic, ['Home'], ctx, ctx2, keyProps, 15.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection);
+          createKeyRow(imageDataDic, ['Home'], ctx, ctx2, keyProps, 15.5 * keySize.x, rowheight, overlap, 0, fontColorSelection);
         }
       }
       if(["Full", "TKL", "FRL"].includes(aspectSelection))
       {
-        createKeyRow(imageDataDic, ['Ins', 'Home', 'PgUp'], ctx, ctx2, keyProps, 15.5 * keySize.x + functionspace, rowheight, overlap, spacing.x, fontColorSelection);
+        createKeyRow(imageDataDic, ['Ins', 'Home', 'PgUp'], ctx, ctx2, keyProps, 15.5 * keySize.x + functionspace, rowheight, overlap, 0, fontColorSelection);
         if (aspectSelection == "Full")
         {
-          createKeyRow(imageDataDic, ['NumLock', 'Num/', 'Num*', 'Num-'], ctx, ctx2, keyProps, 18.5 * keySize.x + 2 * functionspace, rowheight, overlap, spacing.x, fontColorSelection)
+          createKeyRow(imageDataDic, ['NumLock', 'Num/', 'Num*', 'Num-'], ctx, ctx2, keyProps, 18.5 * keySize.x + 2 * functionspace, rowheight, overlap, 0, fontColorSelection)
         }
       }
       if (aspectSelection == "Numpad")
       {
-        createKeyRow(imageDataDic, ['NumLock', 'Num/', 'Num*', 'Num-'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection)
+        createKeyRow(imageDataDic, ['NumLock', 'Num/', 'Num*', 'Num-'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection)
       }
       
       // Row 3
@@ -165,25 +166,25 @@ export default function MerchPage(){
         var rowheight = 1.5 * keySize.y + spacing.y; 
       }
       if (aspectSelection != "Numpad"){
-        createKeyRow(imageDataDic, ['Tab'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.5);
-        createKeyRow(imageDataDic, ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']'], ctx, ctx2, keyProps, 2 * keySize.x, rowheight, 1.43 * overlap, spacing.x, fontColorSelection);
-        createKeyRow(imageDataDic, ['\\'], ctx, ctx2, keyProps, 14 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.5);
+        createKeyRow(imageDataDic, ['Tab'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.5);
+        createKeyRow(imageDataDic, ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']'], ctx, ctx2, keyProps, 2 * keySize.x, rowheight, 1.43 * overlap, 0, fontColorSelection);
+        createKeyRow(imageDataDic, ['\\'], ctx, ctx2, keyProps, 14 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.5);
         if (["Full", "TKL", "FRL"].includes(aspectSelection)){
-          createKeyRow(imageDataDic, ['Del', 'End', 'PgDn'], ctx, ctx2, keyProps, 15.5 * keySize.x + functionspace, rowheight, 1.43*overlap, spacing.x, fontColorSelection);  
+          createKeyRow(imageDataDic, ['Del', 'End', 'PgDn'], ctx, ctx2, keyProps, 15.5 * keySize.x + functionspace, rowheight, 1.43*overlap, 0, fontColorSelection);  
           if(aspectSelection == "Full")
           {
-            createKeyRow(imageDataDic, ['Num+'], ctx, ctx2, keyProps, 21.5 * keySize.x + 2 * functionspace, rowheight, overlap, spacing.x, fontColorSelection, 1, 2)
-            createKeyRow(imageDataDic, ['Num7', 'Num8', 'Num9'], ctx, ctx2, keyProps, 18.5 * keySize.x + functionspace * 2, rowheight, overlap, spacing.x, fontColorSelection);
+            createKeyRow(imageDataDic, ['Num+'], ctx, ctx2, keyProps, 21.5 * keySize.x + 2 * functionspace, rowheight, overlap, 0, fontColorSelection, 1, 2)
+            createKeyRow(imageDataDic, ['Num7', 'Num8', 'Num9'], ctx, ctx2, keyProps, 18.5 * keySize.x + functionspace * 2, rowheight, overlap, 0, fontColorSelection);
           }
         }
         if (["65", "75"].includes(aspectSelection)){
-          createKeyRow(imageDataDic, ['PgUp'], ctx, ctx2, keyProps, 15.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection)
+          createKeyRow(imageDataDic, ['PgUp'], ctx, ctx2, keyProps, 15.5 * keySize.x, rowheight, overlap, 0, fontColorSelection)
         }
       }
       else if (aspectSelection == "Numpad")
       {
-        createKeyRow(imageDataDic, ['Num7', 'Num8', 'Num9'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection);
-        createKeyRow(imageDataDic, ['Num+'], ctx, ctx2, keyProps, 3.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1, 2)
+        createKeyRow(imageDataDic, ['Num7', 'Num8', 'Num9'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection);
+        createKeyRow(imageDataDic, ['Num+'], ctx, ctx2, keyProps, 3.5 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1, 2)
       }
 
       // Row 4
@@ -197,19 +198,19 @@ export default function MerchPage(){
         var rowheight = 2.5 * keySize.y + 2 * spacing.y;
       }
       if (aspectSelection != "Numpad"){
-        createKeyRow(imageDataDic, ['Caps'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.75);
-        createKeyRow(imageDataDic, ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', '\''], ctx, ctx2, keyProps, 2.25 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection);
-        createKeyRow(imageDataDic, ['Enter'], ctx, ctx2, keyProps, 13.25 * keySize.x, rowheight, 1.38*overlap, spacing.x, fontColorSelection, 2.25);
+        createKeyRow(imageDataDic, ['Caps'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.75);
+        createKeyRow(imageDataDic, ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', '\''], ctx, ctx2, keyProps, 2.25 * keySize.x, rowheight, overlap, 0, fontColorSelection);
+        createKeyRow(imageDataDic, ['Enter'], ctx, ctx2, keyProps, 13.25 * keySize.x, rowheight, 1.38*overlap, 0, fontColorSelection, 2.25);
         
         if(["65", "75"].includes(aspectSelection)){
-          createKeyRow(imageDataDic, ['PgDn'], ctx, ctx2, keyProps, 15.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection)
+          createKeyRow(imageDataDic, ['PgDn'], ctx, ctx2, keyProps, 15.5 * keySize.x, rowheight, overlap, 0, fontColorSelection)
         }
         if(aspectSelection == "Full"){
-          createKeyRow(imageDataDic, ['Num4', 'Num5', 'Num6'], ctx, ctx2, keyProps, 18.5 * keySize.x + functionspace * 2, rowheight, overlap, spacing.x, fontColorSelection);
+          createKeyRow(imageDataDic, ['Num4', 'Num5', 'Num6'], ctx, ctx2, keyProps, 18.5 * keySize.x + functionspace * 2, rowheight, overlap, 0, fontColorSelection);
         }
       }
       if(aspectSelection == "Numpad"){
-        createKeyRow(imageDataDic, ['Num4', 'Num5', 'Num6'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection);
+        createKeyRow(imageDataDic, ['Num4', 'Num5', 'Num6'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection);
       }
 
       // Row 5
@@ -223,29 +224,29 @@ export default function MerchPage(){
         var rowheight = 3.5 * keySize.y + 3 * spacing.y;
       }
       if (aspectSelection != "Numpad"){
-        createKeyRow(imageDataDic, ['LShift'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, 1.38*overlap, spacing.x, fontColorSelection, 2.25);
-        createKeyRow(imageDataDic, ['Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/'], ctx, ctx2, keyProps, 2.75 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection);
+        createKeyRow(imageDataDic, ['LShift'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, 1.38*overlap, 0, fontColorSelection, 2.25);
+        createKeyRow(imageDataDic, ['Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/'], ctx, ctx2, keyProps, 2.75 * keySize.x, rowheight, overlap, 0, fontColorSelection);
         if (["65", "75"].includes(aspectSelection)){
-          createKeyRow(imageDataDic, ['Caps2'], ctx, ctx2, keyProps, 12.75 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.75);
-          createKeyRow(imageDataDic, ['Up', 'End'], ctx, ctx2, keyProps, 14.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1);
+          createKeyRow(imageDataDic, ['Caps2'], ctx, ctx2, keyProps, 12.75 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.75);
+          createKeyRow(imageDataDic, ['Up', 'End'], ctx, ctx2, keyProps, 14.5 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1);
         }
         else{
-          createKeyRow(imageDataDic, ['RShift'], ctx, ctx2, keyProps, 12.75 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 2.75);
+          createKeyRow(imageDataDic, ['RShift'], ctx, ctx2, keyProps, 12.75 * keySize.x, rowheight, overlap, 0, fontColorSelection, 2.75);
         }
         if(["TKL", "Full", "FRL"].includes(aspectSelection)){
-          createKeyRow(imageDataDic, ['Up'], ctx, ctx2, keyProps, 16.5 * keySize.x + functionspace, rowheight, overlap, spacing.x, fontColorSelection);
+          createKeyRow(imageDataDic, ['Up'], ctx, ctx2, keyProps, 16.5 * keySize.x + functionspace, rowheight, overlap, 0, fontColorSelection);
           if(aspectSelection == "Full"){
-            createKeyRow(imageDataDic, ['NumEnter'], ctx, ctx2, keyProps, 21.5 * keySize.x + 2 * functionspace, rowheight, overlap, spacing.x, fontColorSelection, 1, 2)
-            createKeyRow(imageDataDic, ['Num1', 'Num2', 'Num3'], ctx, ctx2, keyProps, 18.5 * keySize.x + functionspace * 2, rowheight, overlap, spacing.x, fontColorSelection);
+            createKeyRow(imageDataDic, ['NumEnter'], ctx, ctx2, keyProps, 21.5 * keySize.x + 2 * functionspace, rowheight, overlap, 0, fontColorSelection, 1, 2)
+            createKeyRow(imageDataDic, ['Num1', 'Num2', 'Num3'], ctx, ctx2, keyProps, 18.5 * keySize.x + functionspace * 2, rowheight, overlap, 0, fontColorSelection);
           }
         }
         if(["65", "75"].includes(aspectSelection)){
-          createKeyRow(imageDataDic, ['End'], ctx, ctx2, keyProps, 15.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection)
+          createKeyRow(imageDataDic, ['End'], ctx, ctx2, keyProps, 15.5 * keySize.x, rowheight, overlap, 0, fontColorSelection)
         }
       }
       if(aspectSelection == "Numpad"){
-        createKeyRow(imageDataDic, ['NumEnter'], ctx, ctx2, keyProps, 3.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1, 2)
-        createKeyRow(imageDataDic, ['Num1', 'Num2', 'Num3'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection);
+        createKeyRow(imageDataDic, ['NumEnter'], ctx, ctx2, keyProps, 3.5 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1, 2)
+        createKeyRow(imageDataDic, ['Num1', 'Num2', 'Num3'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection);
       }
 
       // Row 6
@@ -259,31 +260,31 @@ export default function MerchPage(){
         var rowheight = 4.5 * keySize.y + 4 * spacing.y;
       }
       if (aspectSelection != "Numpad"){
-        createKeyRow(imageDataDic, ['LCtrl'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.25);
-        createKeyRow(imageDataDic, ['Win'], ctx, ctx2, keyProps, 1.75 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.25);
-        createKeyRow(imageDataDic, ['LAlt'], ctx, ctx2, keyProps, 3 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.25);
-        createKeyRow(imageDataDic, ['Space'], ctx, ctx2, keyProps, 4.25 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 6.25);
-        createKeyRow(imageDataDic, ['RAlt'], ctx, ctx2, keyProps, 10.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.25);
+        createKeyRow(imageDataDic, ['LCtrl'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.25);
+        createKeyRow(imageDataDic, ['Win'], ctx, ctx2, keyProps, 1.75 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.25);
+        createKeyRow(imageDataDic, ['LAlt'], ctx, ctx2, keyProps, 3 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.25);
+        createKeyRow(imageDataDic, ['Space'], ctx, ctx2, keyProps, 4.25 * keySize.x, rowheight, overlap, 0, fontColorSelection, 6.25);
+        createKeyRow(imageDataDic, ['RAlt'], ctx, ctx2, keyProps, 10.5 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.25);
         if(["75", "65"].includes(aspectSelection)){
-          createKeyRow(imageDataDic, ['RCtrl'], ctx, ctx2, keyProps, 11.75 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.25);
-          createKeyRow(imageDataDic, ['Left', 'Down', 'Right'], ctx, ctx2, keyProps, 13.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection);
+          createKeyRow(imageDataDic, ['RCtrl'], ctx, ctx2, keyProps, 11.75 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.25);
+          createKeyRow(imageDataDic, ['Left', 'Down', 'Right'], ctx, ctx2, keyProps, 13.5 * keySize.x, rowheight, overlap, 0, fontColorSelection);
         }
         else{
-          createKeyRow(imageDataDic, ['Fn'], ctx, ctx2, keyProps, 11.75 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.25);
-          createKeyRow(imageDataDic, ['App'], ctx, ctx2, keyProps, 13 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.25);
-          createKeyRow(imageDataDic, ['RCtrl'], ctx, ctx2, keyProps, 14.25 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.25);
+          createKeyRow(imageDataDic, ['Fn'], ctx, ctx2, keyProps, 11.75 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.25);
+          createKeyRow(imageDataDic, ['App'], ctx, ctx2, keyProps, 13 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.25);
+          createKeyRow(imageDataDic, ['RCtrl'], ctx, ctx2, keyProps, 14.25 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.25);
         }
         if(["TKL", "Full", "FRL"].includes(aspectSelection)){
-          createKeyRow(imageDataDic, ['Left', 'Down', 'Right'], ctx, ctx2, keyProps, 15.5 * keySize.x + functionspace, rowheight, overlap, spacing.x, fontColorSelection);
+          createKeyRow(imageDataDic, ['Left', 'Down', 'Right'], ctx, ctx2, keyProps, 15.5 * keySize.x + functionspace, rowheight, overlap, 0, fontColorSelection);
           if(aspectSelection == "Full"){
-            createKeyRow(imageDataDic, ['Num0'], ctx, ctx2, keyProps, 18.5 * keySize.x + functionspace * 2, rowheight, overlap, spacing.x, fontColorSelection, 2);
-            createKeyRow(imageDataDic, ['NumDel'], ctx, ctx2, keyProps, 20.5 * keySize.x + functionspace * 2, rowheight, overlap, spacing.x, fontColorSelection);
+            createKeyRow(imageDataDic, ['Num0'], ctx, ctx2, keyProps, 18.5 * keySize.x + functionspace * 2, rowheight, overlap, 0, fontColorSelection, 2);
+            createKeyRow(imageDataDic, ['NumDel'], ctx, ctx2, keyProps, 20.5 * keySize.x + functionspace * 2, rowheight, overlap, 0, fontColorSelection);
           }
         }
       }
       if(aspectSelection == "Numpad"){
-        createKeyRow(imageDataDic, ['Num0'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 2);
-        createKeyRow(imageDataDic, ['NumDel'], ctx, ctx2, keyProps, 2.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection);
+        createKeyRow(imageDataDic, ['Num0'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection, 2);
+        createKeyRow(imageDataDic, ['NumDel'], ctx, ctx2, keyProps, 2.5 * keySize.x, rowheight, overlap, 0, fontColorSelection);
       }
 
       //Convertin to base64

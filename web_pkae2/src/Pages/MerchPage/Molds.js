@@ -114,8 +114,8 @@ export default class CherryProfileMold{
         }
 
         // Create Pins Locations
-        const circle_x = [265, 2477, 4692];
-        const circle_y = [60, 3447];
+        const circle_x = [330, 2512, 4704];
+        const circle_y = [107.2, 3447];
         for(let i = 0; i < circle_x.length; i++){
         for(let j = 0; j < circle_y.length; j++)
         {
