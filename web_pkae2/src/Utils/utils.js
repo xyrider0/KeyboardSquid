@@ -161,38 +161,38 @@ function fontSizing(textToPrint){
 
 // Function for creating keyboard sized image
 // Draws on HTML canvas to create preview of what keyboard will look like
-export function createKeyRow(dictIn, dictKeys, canvasIn, canvasOut, keyProps, x_init, y_init, pct_overlap, spacing, fillStyle, lengthmod = 1, lengthmody = 1, faceonly=1, printText = 1){
+export function createKeyRow(dictIn, dictKeys, canvasIn, canvasOut, keyData, x_init, y_init, pct_overlap, spacing, fillStyle, lengthmod = 1, lengthmody = 1, faceonly=1, printText = 1){
     // dictIn = dictionary to store image data in for print
     // dictKeys = array of keys being inputted to store in dictIN
     // canvasIn = html canvas original image is on
     // canvasOut = html canvas to put image preview
-    // KeyProps: 
+    // keyData: 
     //    size = Dimensions of standard (regular num/letter), single key print with properties x, y
     //    keyFace = Dimensions of standard (regular num/letter), single key print face (without sloped edges) with properties x, y
     //    keySlopeOneSide = Dimensions of standard (regular num/letter), single key print sloped edge (one side) with properties x, y
     // xstart = Horizontal Pixel location to grab from original image
     // ystart = Vertical Pixel location to grab from original image
-    // overlap = percentage of overlap between keys to adjust starting location of next keys
+    // pct_overlap = (Rectangle Class, requires props x, y) percentage of overlap between keys to adjust starting location of next keys
     // spacing = percentage gap between key faces (not to scale) (percent of empty space between keys proportional to size of key face)
     let size = new Rectangle(0,0)
     let xoffset = 0
-    let yoffset = keyProps.spacing.y
+    let yoffset = keyData.spacing.y
     if(faceonly){
-      size = keyProps.keyFace
-      xoffset = xoffset + 2 * keyProps.keySlopeOneSide.x
-      yoffset = yoffset + keyProps.keySlopeOneSide.yTop + keyProps.keySlopeOneSide.yBot
+      size = keyData.keyFace
+      xoffset = xoffset + 2 * keyData.keySlopeOneSide.x
+      yoffset = yoffset + keyData.keySlopeOneSide.yTop + keyData.keySlopeOneSide.yBot
     }
     else{
-      size = keyProps.keySize
+      size = keyData.keySize
     }
 
-    const xoverlap = pct_overlap * size.x
-    const yoverlap = pct_overlap * size.y
-    
+    const xoverlap = pct_overlap.x/100 * size.x
+    const yoverlap = pct_overlap.y/100 * size.y
+
     for(let i = 0; i < dictKeys.length; i++){
         const width = lengthmod * size.x - 2 * spacing + (lengthmod-1) * xoffset
         const height = lengthmody * size.y - 2 * spacing + (lengthmody-1) * yoffset
-        const xstart = x_init + i * keyProps.keySize.x + spacing + xoffset
+        const xstart = x_init + i * keyData.keySize.x + spacing + xoffset
         const ystart = y_init + spacing
         const keyLabel = dictKeys[i]
 

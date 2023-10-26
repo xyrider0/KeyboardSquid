@@ -86,7 +86,7 @@ export default function MerchPage(){
       const canvas2 = document.createElement('canvas');
 
       // Create Selection
-      const overlap = 0; // percentage overlap between keys
+      const overlap = new Rectangle(80, 70); // percentage overlap between keys (Rectangle Class)
 
       // Manual Resizing for Visuals
       canvas2.width = canvas.width;
@@ -167,10 +167,10 @@ export default function MerchPage(){
       }
       if (aspectSelection != "Numpad"){
         createKeyRow(imageDataDic, ['Tab'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.5);
-        createKeyRow(imageDataDic, ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']'], ctx, ctx2, keyProps, 2 * keySize.x, rowheight, 1.43 * overlap, 0, fontColorSelection);
+        createKeyRow(imageDataDic, ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']'], ctx, ctx2, keyProps, 2 * keySize.x, rowheight, overlap, 0, fontColorSelection);
         createKeyRow(imageDataDic, ['\\'], ctx, ctx2, keyProps, 14 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.5);
         if (["Full", "TKL", "FRL"].includes(aspectSelection)){
-          createKeyRow(imageDataDic, ['Del', 'End', 'PgDn'], ctx, ctx2, keyProps, 15.5 * keySize.x + functionspace, rowheight, 1.43*overlap, 0, fontColorSelection);  
+          createKeyRow(imageDataDic, ['Del', 'End', 'PgDn'], ctx, ctx2, keyProps, 15.5 * keySize.x + functionspace, rowheight, overlap, 0, fontColorSelection);  
           if(aspectSelection == "Full")
           {
             createKeyRow(imageDataDic, ['Num+'], ctx, ctx2, keyProps, 21.5 * keySize.x + 2 * functionspace, rowheight, overlap, 0, fontColorSelection, 1, 2)
@@ -200,7 +200,7 @@ export default function MerchPage(){
       if (aspectSelection != "Numpad"){
         createKeyRow(imageDataDic, ['Caps'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.75);
         createKeyRow(imageDataDic, ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', '\''], ctx, ctx2, keyProps, 2.25 * keySize.x, rowheight, overlap, 0, fontColorSelection);
-        createKeyRow(imageDataDic, ['Enter'], ctx, ctx2, keyProps, 13.25 * keySize.x, rowheight, 1.38*overlap, 0, fontColorSelection, 2.25);
+        createKeyRow(imageDataDic, ['Enter'], ctx, ctx2, keyProps, 13.25 * keySize.x, rowheight, overlap, 0, fontColorSelection, 2.25);
         
         if(["65", "75"].includes(aspectSelection)){
           createKeyRow(imageDataDic, ['PgDn'], ctx, ctx2, keyProps, 15.5 * keySize.x, rowheight, overlap, 0, fontColorSelection)
@@ -224,7 +224,7 @@ export default function MerchPage(){
         var rowheight = 3.5 * keySize.y + 3 * spacing.y;
       }
       if (aspectSelection != "Numpad"){
-        createKeyRow(imageDataDic, ['LShift'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, 1.38*overlap, 0, fontColorSelection, 2.25);
+        createKeyRow(imageDataDic, ['LShift'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, 0, fontColorSelection, 2.25);
         createKeyRow(imageDataDic, ['Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/'], ctx, ctx2, keyProps, 2.75 * keySize.x, rowheight, overlap, 0, fontColorSelection);
         if (["65", "75"].includes(aspectSelection)){
           createKeyRow(imageDataDic, ['Caps2'], ctx, ctx2, keyProps, 12.75 * keySize.x, rowheight, overlap, 0, fontColorSelection, 1.75);
