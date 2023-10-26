@@ -52,13 +52,13 @@ export default function MerchPage(){
 
       ctx.imageSmoothingQuality = 'high';
 
-      const keyFace = new Rectangle(173, 202) // Chosen so mold left and righ edges align at 0 overlap :3
-      const keySlopeOneSide = new Rectangle(0.2255 * keyFace.x, 0.142857 * keyFace.y)
+      const keyFace = new Rectangle(189, 217) // Chosen so mold left and righ edges align at 0 overlap :3
+      const keySlopeOneSide = {x: Math.round(0.2255 * keyFace.x), yTop: Math.round(0.0714 * keyFace.y), yBot: Math.round(0.142857 * keyFace.y)}
       const spacing = new Rectangle(0.1322 * keyFace.x, 0.0714 * keyFace.y);
-      const keySize = new Rectangle(keyFace.x + 2*keySlopeOneSide.x, keyFace.y + 2*keySlopeOneSide.y)
-      const functionspace  = 2 * keySlopeOneSide.y // Space between function keys and first row
+      const keySize = new Rectangle(keyFace.x + 2*keySlopeOneSide.x, keyFace.y + keySlopeOneSide.yTop + keySlopeOneSide.yBot)
+      const functionspace  = 4 * spacing.y // Space between function keys and first row
 
-      const keyProps = {'keyFace': keyFace, 'keySize': keySize, 'keySlopeOneSide': keySlopeOneSide}
+      const keyProps = {'keyFace': keyFace, 'keySize': keySize, 'keySlopeOneSide': keySlopeOneSide, 'spacing': spacing}
 
       canvas.width = keySize.x * aspectDict[aspectSelection].x
       canvas.height = canvas.width * aspectDict[aspectSelection].y/aspectDict[aspectSelection].x
@@ -129,7 +129,7 @@ export default function MerchPage(){
         var rowheight = 1.5 * keySize.y + functionspace;
       }
       else if (aspectSelection == "75"){
-        var rowheight = 1.5 * keySize.y;
+        var rowheight = 1.5 * keySize.y  + spacing.y;
       }
       else if (["FRL", "65", "60"].includes(aspectSelection)){
         var rowheight = 0.5 * keySize.y
@@ -156,13 +156,13 @@ export default function MerchPage(){
       
       // Row 3
       if (["Full", "TKL", "Numpad"].includes(aspectSelection)){
-        var rowheight = 2.5 * keySize.y + functionspace;     
+        var rowheight = 2.5 * keySize.y + functionspace + 2 * spacing.y;     
       }
       else if (aspectSelection == "75"){
-        var rowheight = 2.5 * keySize.y;
+        var rowheight = 2.5 * keySize.y + 2 * spacing.y;
       }
       else{
-        var rowheight = 1.5 * keySize.y; 
+        var rowheight = 1.5 * keySize.y + spacing.y; 
       }
       if (aspectSelection != "Numpad"){
         createKeyRow(imageDataDic, ['Tab'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.5);
@@ -188,13 +188,13 @@ export default function MerchPage(){
 
       // Row 4
       if(["Full", "TKL", "Numpad"].includes(aspectSelection)){
-        var rowheight = 3.5 * keySize.y + functionspace;
+        var rowheight = 3.5 * keySize.y + functionspace + 3 * spacing.y;
       }
       else if (aspectSelection == "75"){
-        var rowheight = 3.5 * keySize.y;
+        var rowheight = 3.5 * keySize.y + 3 * spacing.y;
       }
       else{
-        var rowheight = 2.5 * keySize.y
+        var rowheight = 2.5 * keySize.y + 2 * spacing.y;
       }
       if (aspectSelection != "Numpad"){
         createKeyRow(imageDataDic, ['Caps'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.75);
@@ -214,13 +214,13 @@ export default function MerchPage(){
 
       // Row 5
       if(["Full", "TKL", "Numpad"].includes(aspectSelection)){
-        var rowheight = 4.5 * keySize.y + functionspace;
+        var rowheight = 4.5 * keySize.y + functionspace + 4 * spacing.y;
       }
       else if (aspectSelection == "75"){
-        var rowheight = 4.5 * keySize.y;
+        var rowheight = 4.5 * keySize.y + 4 * spacing.y;
       }
       else{
-        var rowheight = 3.5 * keySize.y;
+        var rowheight = 3.5 * keySize.y + 3 * spacing.y;
       }
       if (aspectSelection != "Numpad"){
         createKeyRow(imageDataDic, ['LShift'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, 1.38*overlap, spacing.x, fontColorSelection, 2.25);
@@ -250,13 +250,13 @@ export default function MerchPage(){
 
       // Row 6
       if(["Full", "TKL", "Numpad"].includes(aspectSelection)){
-        var rowheight = 5.5 * keySize.y + functionspace;
+        var rowheight = 5.5 * keySize.y + functionspace + 5 * spacing.y;
       }
       else if (aspectSelection == "75"){
-        var rowheight = 5.5 * keySize.y;
+        var rowheight = 5.5 * keySize.y + 5 * spacing.y;
       }
       else{
-        var rowheight = 4.5 * keySize.y;
+        var rowheight = 4.5 * keySize.y + 4 * spacing.y;
       }
       if (aspectSelection != "Numpad"){
         createKeyRow(imageDataDic, ['LCtrl'], ctx, ctx2, keyProps, 0.5 * keySize.x, rowheight, overlap, spacing.x, fontColorSelection, 1.25);

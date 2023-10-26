@@ -48,13 +48,16 @@ export function draw_arrow(ctx, x0, y0, x1, y1, width, head_len) {
 }
 
 // Draw on HTML canvas the key label
-export function createKeyText(keyLabel, ctx, xstart, ystart, font, fillStyle = '#FFFFFF'){
+export function createKeyText(keyLabel, ctx, xstart, ystart, fillStyle = '#FFFFFF'){
   ctx.strokeStyle = ctx.fillStyle
-  ctx.font = font
   ctx.fillStyle = fillStyle
   ctx.textAlign = "center"
   ctx.letterSpacing = "0px"
-  ctx.textBaseline = "bottom"
+  ctx.textBaseline = "top"
+  if(ctx.textBaseline == "top")
+  {
+    ystart = ystart - 55
+  }
   ctx.wordSpacing = "-8px"
   let yoffset = {"bottom": -20, "middle": 0, "top": 20}
   const customKeys = {'`': "`~", '1':'1!', '2': '2@', '3': '3#', '4': '4$', '5': '5%', '6': '6^', '7': '7&', '8': '8*', '9': '9(', '0': '0)', '-': '-_', '=': '=+',
@@ -62,7 +65,8 @@ export function createKeyText(keyLabel, ctx, xstart, ystart, font, fillStyle = '
               'NumLock': 'Num', 'Num/': '/', 'Num*': '*', 'Num-': '-', 'Num+':'+', 'Num1': '1', 'Num2':'2', 'Num3':'3', 'Num4':'4', 'Num5':'5', 'Num6':'6', 'Num7': '7', 'Num8': '8',
           'Num9': '9', 'Num0': '0', 'NumEnter': 'Enter', 'RShift':'Shift', 'LShift':'Shift', 'F1': 'F 1', 'F2': 'F 2', 'F3': 'F 3', 'F4': 'F 4', 'F5': 'F 5',
           'F6': 'F 6', 'F7': 'F 7', 'F8': 'F 8', 'F9': 'F 9', 'F10':'F 10', 'F11': 'F 11', 'F12': 'F 12'}
-  const specialKeys = ['Backspace', 'Enter', 'Up', 'Down', 'Left', 'Right', 'NumDel', 'Space', '\\']
+  const specialKeys = ['Backspace', 'Enter', 'Up', 'Down', 'Left', 'Right', 'NumDel', 'Space', 'LShift', 'RShift', '\\', 'Caps', 'Caps2', 'Tab',
+                        'LCtrl', 'Win', 'LAlt', 'RAlt', 'Fn', 'App', 'RCtrl']
 
   if(specialKeys.includes(keyLabel)){
     let len = 12
@@ -95,13 +99,25 @@ export function createKeyText(keyLabel, ctx, xstart, ystart, font, fillStyle = '
       ctx.lineTo(xstart, ystart - 2)
       ctx.lineWidth = 3
       ctx.stroke()
+      ctx.font = fontSizing('\\|')
       ctx.fillText('|', xstart + 25, ystart)
+      
     }
     else{
+      //console.log('Special Key ' + keyLabel + ' not found!')
+      const specialKeyFont = 'SP'
+      ctx.font = fontSizing(specialKeyFont)
       ctx.fillText((customKeys[keyLabel] ? customKeys[keyLabel] : keyLabel), xstart, ystart)
     }
   }
   else{
+    if(customKeys[keyLabel]){
+      ctx.font = fontSizing(customKeys[keyLabel])
+    }
+    else{
+      ctx.font = fontSizing(keyLabel)
+    }
+    
     if(['`', '1', '2', '3', '4', '5', '6','7', '8', '9', '0'].includes(keyLabel)){
         let letterSpacing = 5
         ctx.letterSpacing = "5px"
@@ -110,6 +126,9 @@ export function createKeyText(keyLabel, ctx, xstart, ystart, font, fillStyle = '
     else if ([, '-', '=', ',', '.', '/', ';', '\'', '[', ']', '\\'].includes(keyLabel)){
         let letterSpacing = 20
         ctx.letterSpacing = '20px'
+        if(keyLabel=='-'){
+          ystart = ystart - 20;
+        }
         ctx.fillText((customKeys[keyLabel] ? customKeys[keyLabel] : keyLabel), xstart + letterSpacing/2, ystart)
     }
     else if (['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12'].includes(keyLabel)){
@@ -122,9 +141,27 @@ export function createKeyText(keyLabel, ctx, xstart, ystart, font, fillStyle = '
   }        
 }
 
+function fontSizing(textToPrint){
+  const wordFont='48px serif'
+  const functionFont = '54px serif'
+  const pairFont = '60px serif'
+  const letterFont = '66px serif'
+  
+  if(textToPrint.length == 1){
+    return letterFont
+  }
+  else if (textToPrint[0] == 'F'){
+    return functionFont
+  }
+  else if (textToPrint.length==2){
+    return pairFont
+  }
+  return wordFont
+}
+
 // Function for creating keyboard sized image
 // Draws on HTML canvas to create preview of what keyboard will look like
-export function createKeyRow(dictIn, dictKeys, canvasIn, canvasOut, keyProps, x_init, y_init, pct_overlap, spacing, fillStyle, lengthmod = 1, lengthmody = 1, font='42px serif', faceonly=0){
+export function createKeyRow(dictIn, dictKeys, canvasIn, canvasOut, keyProps, x_init, y_init, pct_overlap, spacing, fillStyle, lengthmod = 1, lengthmody = 1, faceonly=1, printText = 1){
     // dictIn = dictionary to store image data in for print
     // dictKeys = array of keys being inputted to store in dictIN
     // canvasIn = html canvas original image is on
@@ -139,25 +176,29 @@ export function createKeyRow(dictIn, dictKeys, canvasIn, canvasOut, keyProps, x_
     // spacing = percentage gap between key faces (not to scale) (percent of empty space between keys proportional to size of key face)
     let size = new Rectangle(0,0)
     let xoffset = 0
+    let yoffset = keyProps.spacing.y
     if(faceonly){
       size = keyProps.keyFace
-      xoffset = keyProps.keySlopeOneSide.x
+      xoffset = xoffset + 2 * keyProps.keySlopeOneSide.x
+      yoffset = yoffset + keyProps.keySlopeOneSide.yTop + keyProps.keySlopeOneSide.yBot
     }
     else{
       size = keyProps.keySize
     }
-    
+
     const xoverlap = pct_overlap * size.x
     const yoverlap = pct_overlap * size.y
     
     for(let i = 0; i < dictKeys.length; i++){
-        const width = lengthmod * size.x - 2 * spacing + (lengthmod-1) * xoffset *2
-        const height = lengthmody * size.y - 2 * spacing
+        const width = lengthmod * size.x - 2 * spacing + (lengthmod-1) * xoffset
+        const height = lengthmody * size.y - 2 * spacing + (lengthmody-1) * yoffset
         const xstart = x_init + i * keyProps.keySize.x + spacing + xoffset
         const ystart = y_init + spacing
         const keyLabel = dictKeys[i]
 
-        createKeyText(keyLabel, canvasIn, (xstart + width/2), (ystart + 4/9 * height), font, fillStyle)
+        if(printText){
+          createKeyText(keyLabel, canvasIn, (xstart + width/2), (ystart + 4/9 * height), fillStyle)
+        }
 
         canvasOut.drawImage(canvasIn.canvas, xstart, ystart, width, height, xstart, ystart, width, height)
         const imageDataWithBleed = {'x': xstart-xoverlap, 'y': ystart-yoverlap, 'dx': width + 2*xoverlap, 'dy': height + 2 * yoverlap}
