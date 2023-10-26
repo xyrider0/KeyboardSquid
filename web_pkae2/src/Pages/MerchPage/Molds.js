@@ -67,24 +67,42 @@ export default class CherryProfileMold{
         createKeys(this.keyPropsMold1, ['End', 'PgDn', 'Num7', 'Num8', 'Num9', 'VolDown', 'Music', 'Play', 'VolUp'], mold1startX, 2913, moldspacing, this.keySizes['r3']); // Mold Row 6
 
         // Adjustments based on testing
-        const mold2startX = 488;
+        const mold2startX = 547;
         // Mold 2 Properties
-        createKeys(this.keyPropsMold2, ['Esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8'], mold2startX, 496, 490, this.keySizes['r4']); // Mold Row 1
-        createKeys(this.keyPropsMold2, ['F9', 'F10', 'F11', 'F12', 'PrtSc', 'ScrLk', 'Pause', '`', '1', '2'], mold2startX, 909, 435, this.keySizes['r4']); // Mold Row 2
-        createKeys(this.keyPropsMold2, ['3', '4', '5', '6', '7', '8', '9', '0', '-', '='], mold2startX, 1322, 435, this.keySizes['r4']); // Mold Row 3
-        createKeys(this.keyPropsMold2, ['Ins', 'Home', 'PgUp', 'NumLock', 'Num/', 'Num*', 'Num-'], mold2startX, 1736, 532, this.keySizes['r4']);// Mold Row 4
-        createKeys(this.keyPropsMold2, ['Backspace'], 4280, 1736, 0, this.keySizes['r4 2.0']);// Mold Row 4
-        createKeys(this.keyPropsMold2, ['Tab', '\\'], 543, 2150, 641, this.keySizes['r3 1.5']);// Mold Row 5
-        createKeys(this.keyPropsMold2, ['Enter'], 1842, 2150, 0, this.keySizes['r2 2.25']);// Mold Row 5
-        createKeys(this.keyPropsMold2, ['LShift'], 2630, 2150, 0, this.keySizes['r1 2.25']);// Mold Row 5
-        createKeys(this.keyPropsMold2, ['Num0'], 3411, 2150, 0, this.keySizes['r1 2']);// Mold Row 5
-        createKeys(this.keyPropsMold2, ['RShift'], 4196, 2150, 0, this.keySizes['r1 2.75']);// Mold Row 5
-        createKeys(this.keyPropsMold2, ['LCtrl', 'Win', 'LAlt', 'RAlt', 'Fn', 'App', 'RCtrl'], mold2startX+28, 2562, 540, this.keySizes['r1 1.25']);// Mold Row 6
-        createKeys(this.keyPropsMold2, ['Caps'], 4323, 2562, 0, this.keySizes['r1 1.75']);// Mold Row 6
-        createKeys(this.keyPropsMold2, ['Caps2'], mold2startX, 2975, 0, this.keySizes['r2 1.75']);// Mold Row 7
-        createKeys(this.keyPropsMold2, ['Num+'], 1389, 2975, 0, this.keySizes['+']);// Mold Row 7
-        createKeys(this.keyPropsMold2, ['NumEnter'], 2409, 2975, 0, this.keySizes['NumEnter']);// Mold Row 7
-        createKeys(this.keyPropsMold2, ['Space'], 3796, 2975, 0, this.keySizes['r1 6.25']);// Mold Row 7
+        
+        const row1spacing = 483
+        const row1y = 520
+        createKeys(this.keyPropsMold2, ['Esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8'], mold2startX, row1y, row1spacing, this.keySizes['r4']); // Mold Row 1
+
+        const row2_3spacing = 430
+        const row2y = 932
+        createKeys(this.keyPropsMold2, ['F9', 'F10', 'F11', 'F12', 'PrtSc', 'ScrLk', 'Pause', '`', '1', '2'], mold2startX, row2y, row2_3spacing, this.keySizes['r4']); // Mold Row 2
+
+        const row3y = 1342
+        createKeys(this.keyPropsMold2, ['3', '4', '5', '6', '7', '8', '9', '0', '-', '='], mold2startX, row3y, row2_3spacing, this.keySizes['r4']); // Mold Row 3
+
+        const row4y = 1760
+        const row4spacing = 520
+        createKeys(this.keyPropsMold2, ['Ins', 'Home', 'PgUp', 'NumLock', 'Num/', 'Num*', 'Num-'], mold2startX, row4y, row4spacing, this.keySizes['r4']);// Mold Row 4
+        createKeys(this.keyPropsMold2, ['Backspace'], 4304, row4y, 0, this.keySizes['r4 2.0']);// Mold Row 4
+        
+        const row5y = 2174
+        createKeys(this.keyPropsMold2, ['Tab', '\\'], 543+56, row5y, 637, this.keySizes['r3 1.5']);// Mold Row 5
+        createKeys(this.keyPropsMold2, ['Enter'], 1842+73, row5y, 0, this.keySizes['r2 2.25']);// Mold Row 5
+        createKeys(this.keyPropsMold2, ['LShift'], 2630+71, row5y, 0, this.keySizes['r1 2.25']);// Mold Row 5
+        createKeys(this.keyPropsMold2, ['Num0'], 3411+41.3, row5y, 0, this.keySizes['r1 2']);// Mold Row 5
+        createKeys(this.keyPropsMold2, ['RShift'], 4196+32, row5y, 0, this.keySizes['r1 2.75']);// Mold Row 5
+        
+        const row6y = 2586
+        const row6spacing = 540
+        createKeys(this.keyPropsMold2, ['LCtrl', 'Win', 'LAlt', 'RAlt', 'Fn', 'App', 'RCtrl'], mold2startX+28, row6y, row6spacing, this.keySizes['r1 1.25']);// Mold Row 6
+        createKeys(this.keyPropsMold2, ['Caps'], 4323+6, row6y, 0, this.keySizes['r1 1.75']);// Mold Row 6
+
+        const row7y = 2999
+        createKeys(this.keyPropsMold2, ['Caps2'], mold2startX+66, row7y, 0, this.keySizes['r2 1.75']);// Mold Row 7
+        createKeys(this.keyPropsMold2, ['Num+'], 1389+124, row7y, 0, this.keySizes['+']);// Mold Row 7
+        createKeys(this.keyPropsMold2, ['NumEnter'], 2409+32, row7y, 0, this.keySizes['NumEnter']);// Mold Row 7
+        createKeys(this.keyPropsMold2, ['Space'], 3796+51, row7y, 0, this.keySizes['r1 6.25']);// Mold Row 7
     }
 
     // Function for creating the actual print for the sublimation dying on molds

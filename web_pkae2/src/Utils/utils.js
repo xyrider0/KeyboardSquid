@@ -95,8 +95,8 @@ export function createKeyText(keyLabel, ctx, xstart, ystart, fillStyle = '#FFFFF
     else if (keyLabel == '\\'){
       let x = 30
       ctx.beginPath();
-      ctx.moveTo(xstart - x, ystart - 50)
-      ctx.lineTo(xstart, ystart - 2)
+      ctx.moveTo(xstart - x-10, ystart + 6)
+      ctx.lineTo(xstart-10, ystart + 58)
       ctx.lineWidth = 3
       ctx.stroke()
       ctx.font = fontSizing('\\|')
