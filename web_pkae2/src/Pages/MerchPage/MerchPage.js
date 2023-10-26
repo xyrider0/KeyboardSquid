@@ -86,7 +86,7 @@ export default function MerchPage(){
       const canvas2 = document.createElement('canvas');
 
       // Create Selection
-      const overlap = new Rectangle(80, 70); // percentage overlap between keys (Rectangle Class)
+      const overlap = new Rectangle(60, 41); // percentage overlap between keys (Rectangle Class)
 
       // Manual Resizing for Visuals
       canvas2.width = canvas.width;
