@@ -54,17 +54,18 @@ export default class CherryProfileMold{
         this.keyPropsMold2 = {};
 
         // Adjustments based on testing
-        const moldspacing = 472;
-        const mold1startX = 548;
+        const moldspacing = 472-4;
+        const mold1startX = 548+83;
+        const heightadj = 24
 
         // Mold 1 Properties
-        createKeys(this.keyPropsMold1, ['Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.'], mold1startX, 567, moldspacing, this.keySizes['r1']); // Mold Row 1
-        createKeys(this.keyPropsMold1, ['Left', 'Up', 'Right', 'Down', 'Num1', 'Num2', 'Num3', 'NumDel', '/'], mold1startX, 1040, moldspacing, this.keySizes['r1']); // Mold Row 2
-        createKeys(this.keyPropsMold1, ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'], mold1startX, 1507, moldspacing, this.keySizes['r2']); // Mold Row 3
-        createKeys(this.keyPropsMold1, [';', '\'', 'Num4', 'Num5', 'Num6'], mold1startX, 1978, moldspacing, this.keySizes['r2']); // Mold Row 4
-        createKeys(this.keyPropsMold1, ['Q', 'W', 'E', 'R'], 2908, 1978, moldspacing, this.keySizes['r3']); // Mold Row 4
-        createKeys(this.keyPropsMold1, ['T', 'Y', 'U', 'I', 'O', 'P', '[', ']', 'Del'], mold1startX, 2440, moldspacing, this.keySizes['r3']); // Mold Row 5
-        createKeys(this.keyPropsMold1, ['End', 'PgDn', 'Num7', 'Num8', 'Num9', 'VolDown', 'Music', 'Play', 'VolUp'], mold1startX, 2913, moldspacing, this.keySizes['r3']); // Mold Row 6
+        createKeys(this.keyPropsMold1, ['Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.'], mold1startX, 602 + heightadj, moldspacing, this.keySizes['r1']); // Mold Row 1
+        createKeys(this.keyPropsMold1, ['Left', 'Up', 'Right', 'Down', 'Num1', 'Num2', 'Num3', 'NumDel', '/'], mold1startX, 1052+ heightadj, moldspacing, this.keySizes['r1']); // Mold Row 2
+        createKeys(this.keyPropsMold1, ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'], mold1startX, 1508+heightadj, moldspacing, this.keySizes['r2']); // Mold Row 3
+        createKeys(this.keyPropsMold1, [';', '\'', 'Num4', 'Num5', 'Num6', 'Q', 'W', 'E', 'R'], mold1startX, 1978+heightadj, moldspacing, this.keySizes['r2']); // Mold Row 4
+        //createKeys(this.keyPropsMold1, ['Q', 'W', 'E', 'R'], 2908, 1978+heightadj, moldspacing, this.keySizes['r3']); // Mold Row 4
+        createKeys(this.keyPropsMold1, ['T', 'Y', 'U', 'I', 'O', 'P', '[', ']', 'Del'], mold1startX, 2440+heightadj, moldspacing, this.keySizes['r3']); // Mold Row 5
+        createKeys(this.keyPropsMold1, ['End', 'PgDn', 'Num7', 'Num8', 'Num9', 'VolDown', 'Music', 'Play', 'VolUp'], mold1startX, 2913+heightadj, moldspacing, this.keySizes['r3']); // Mold Row 6
 
         // Adjustments based on testing
         const mold2startX = 547;
