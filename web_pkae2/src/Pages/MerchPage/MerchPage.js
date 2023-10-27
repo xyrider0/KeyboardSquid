@@ -4,7 +4,7 @@ import 'react-image-crop/dist/ReactCrop.css';
 import styles from './MerchPage.module.css';
 import Rectangle from "../../Utils/utils";
 import CherryProfileMold from "./Molds.js";
-import { createKeyRow } from '../../Utils/utils';
+import { createKeyRow } from './CanvasDrawer.js';
 
 const aspectDict = {
   'Full': new Rectangle(23.5, 7.3),
