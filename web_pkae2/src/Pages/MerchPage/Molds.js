@@ -1,6 +1,4 @@
 import Rectangle from '../../Utils/utils'
-import { draw_arrow } from '../../Utils/utils'
-
 
 // Function for creating a row of keys with similar sizing
 function createKeys(dict, dictKeys, xstart, centerY, spacingX, keySize){
@@ -27,7 +25,7 @@ export default class CherryProfileMold{
         // A3 Dimensions
         this.size = new Rectangle(4950, 3510);
 
-        // keycap print sizes for different rows on keyboard
+        // keycap print sizes for different rows on keyboard on original mold print file (they are crap)
         this.keySizes = {
           'r4': new Rectangle(355, 355),
           'r4 2.0': new Rectangle(579, 355),
