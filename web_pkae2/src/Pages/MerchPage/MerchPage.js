@@ -45,6 +45,11 @@ export default function MerchPage(){
   };
 
   const cropImageNow = () => {
+
+      // Create Selection
+      // const overlap = new Rectangle(60, 41); // percentage overlap between keys (Rectangle Class)
+      const overlap = new Rectangle(0, 0);
+
       const canvas = document.createElement('canvas');
       const scaleX = image.naturalWidth / image.width;
       const scaleY = image.naturalHeight / image.height;
@@ -84,9 +89,6 @@ export default function MerchPage(){
 
       // Keycap Preview
       const canvas2 = document.createElement('canvas');
-
-      // Create Selection
-      const overlap = new Rectangle(60, 41); // percentage overlap between keys (Rectangle Class)
 
       // Manual Resizing for Visuals
       canvas2.width = canvas.width;

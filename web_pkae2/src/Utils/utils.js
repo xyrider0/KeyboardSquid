@@ -105,7 +105,7 @@ export function createKeyText(keyLabel, ctx, xstart, ystart, fillStyle = '#FFFFF
     }
     else{
       //console.log('Special Key ' + keyLabel + ' not found!')
-      const specialKeyFont = 'SP'
+      const specialKeyFont = 'FunctionStyle'
       ctx.font = fontSizing(specialKeyFont)
       ctx.fillText((customKeys[keyLabel] ? customKeys[keyLabel] : keyLabel), xstart, ystart)
     }
