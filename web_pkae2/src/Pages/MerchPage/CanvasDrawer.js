@@ -35,6 +35,7 @@ function createKeyText(keyLabel, ctx, xstart, ystart, fillStyle = '#FFFFFF'){
   {
     ystart = ystart - 55
   }
+  const specialKeyStart = ystart + 35
   ctx.wordSpacing = "-8px"
   let yoffset = {"bottom": -20, "middle": 0, "top": 20}
   const customKeys = {'`': "`~", '1':'1!', '2': '2@', '3': '3#', '4': '4$', '5': '5%', '6': '6^', '7': '7&', '8': '8*', '9': '9(', '0': '0)', '-': '-_', '=': '=+',
@@ -43,7 +44,7 @@ function createKeyText(keyLabel, ctx, xstart, ystart, fillStyle = '#FFFFFF'){
           'Num9': '9', 'Num0': '0', 'NumEnter': 'Enter', 'RShift':'Shift', 'LShift':'Shift', 'F1': 'F 1', 'F2': 'F 2', 'F3': 'F 3', 'F4': 'F 4', 'F5': 'F 5',
           'F6': 'F 6', 'F7': 'F 7', 'F8': 'F 8', 'F9': 'F 9', 'F10':'F 10', 'F11': 'F 11', 'F12': 'F 12'}
   const specialKeys = ['Backspace', 'Enter', 'Up', 'Down', 'Left', 'Right', 'NumDel', 'Space', 'LShift', 'RShift', '\\', 'Caps', 'Caps2', 'Tab',
-                        'LCtrl', 'Win', 'LAlt', 'RAlt', 'Fn', 'App', 'RCtrl']
+                        'LCtrl', 'Win', 'LAlt', 'RAlt', 'Fn', 'App', 'RCtrl', 'VolDown', 'Music', 'Play', 'VolUp']
 
   if(specialKeys.includes(keyLabel)){
     let len = 12
@@ -80,11 +81,14 @@ function createKeyText(keyLabel, ctx, xstart, ystart, fillStyle = '#FFFFFF'){
       ctx.fillText('|', xstart + 25, ystart)
       
     }
+    else if (keyLabel == 'NumDel'){
+      ctx.fillText('.', xstart, ystart)
+    }
     else{
       //console.log('Special Key ' + keyLabel + ' not found!')
-      const specialKeyFont = 'FunctionStyle'
+      const specialKeyFont = 'Special'
       ctx.font = fontSizing(specialKeyFont)
-      ctx.fillText((customKeys[keyLabel] ? customKeys[keyLabel] : keyLabel), xstart, ystart)
+      ctx.fillText((customKeys[keyLabel] ? customKeys[keyLabel] : keyLabel), xstart, specialKeyStart)
     }
   }
   else{
@@ -112,6 +116,10 @@ function createKeyText(keyLabel, ctx, xstart, ystart, fillStyle = '#FFFFFF'){
         
         ctx.fillText((customKeys[keyLabel] ? customKeys[keyLabel] : keyLabel), xstart, ystart)
     }
+    else if (['Num+', 'NumEnter'].includes(keyLabel)){
+        
+      ctx.fillText((customKeys[keyLabel] ? customKeys[keyLabel] : keyLabel), xstart, ystart+25)
+    }
     else{
         ctx.fillText((customKeys[keyLabel] ? customKeys[keyLabel] : keyLabel), xstart, ystart)
     }
@@ -120,15 +128,15 @@ function createKeyText(keyLabel, ctx, xstart, ystart, fillStyle = '#FFFFFF'){
 
 function fontSizing(textToPrint){
   const wordFont='48px serif'
-  const functionFont = '54px serif'
-  const pairFont = '60px serif'
+  const specialFont = '54px serif'
+  const pairFont = '54px serif'
   const letterFont = '66px serif'
   
   if(textToPrint.length == 1){
     return letterFont
   }
-  else if (textToPrint[0] == 'F'){
-    return functionFont
+  else if (textToPrint == 'Special'){
+    return specialFont
   }
   else if (textToPrint.length==2){
     return pairFont
