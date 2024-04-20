@@ -57,7 +57,7 @@ export default function MerchPage(){
 
       ctx.imageSmoothingQuality = 'high';
 
-      // 11.8 px / cm
+      // 11.8 px / mm
       const keyFace = new Rectangle(142, 165) // Chosen so mold left and righ edges align at 0 overlap :3
       const keySlopeOneSide = {x: Math.round(0.25 * keyFace.x), yTop: Math.round(0.0714 * keyFace.y), yBot: Math.round(0.142857 * keyFace.y)}
       const spacing = new Rectangle(0.1322 * keyFace.x, 0.0714 * keyFace.y);
