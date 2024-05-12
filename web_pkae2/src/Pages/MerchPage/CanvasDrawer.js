@@ -158,7 +158,7 @@ export function createKeyRow(dictIn, dictKeys, canvasIn, canvasOut, keyData, x_i
     // xstart = Horizontal Pixel location to grab from original image
     // ystart = Vertical Pixel location to grab from original image
     // pct_overlap = (Rectangle Class, requires props x, y) percentage of overlap between keys to adjust starting location of next keys
-    // spacing = percentage gap between key faces (not to scale) (percent of empty space between keys proportional to size of key face)
+    // spacing = gap between keys (not key faces)
     let size = new Rectangle(0,0)
     let xoffset = 0
     let yoffset = keyData.spacing.y
@@ -175,16 +175,17 @@ export function createKeyRow(dictIn, dictKeys, canvasIn, canvasOut, keyData, x_i
     const yoverlap = pct_overlap.y/100 * size.y
 
     for(let i = 0; i < dictKeys.length; i++){
-        const width = lengthmod * size.x - 2 * spacing + (lengthmod-1) * xoffset
-        const height = lengthmody * size.y - 2 * spacing + (lengthmody-1) * yoffset
-        const xstart = x_init + i * keyData.keySize.x + spacing + xoffset
-        const ystart = y_init + spacing
+        const width = lengthmod * size.x + (lengthmod-1) * (xoffset + spacing.x)
+        const height = lengthmody * size.y + (lengthmody-1) * yoffset
+        const xstart = x_init + i * (keyData.keySize.x + spacing.x) + xoffset
+        const ystart = y_init
         const keyLabel = dictKeys[i]
 
         if(printText){
           createKeyText(keyLabel, canvasIn, (xstart + width/2), (ystart + 4/9 * height), fillStyle)
         }
 
+        console.log(width, height, xoverlap, yoverlap)
         canvasOut.drawImage(canvasIn.canvas, xstart, ystart, width, height, xstart, ystart, width, height)
         const imageDataWithBleed = {'x': xstart-xoverlap, 'y': ystart-yoverlap, 'dx': width + 2*xoverlap, 'dy': height + 2 * yoverlap}
 

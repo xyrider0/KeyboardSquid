@@ -101,8 +101,8 @@ export default class CherryProfileMold{
 
         const row7y = 2985
         createKeys(this.keyPropsMold2, ['Caps'], mold2startX+80, row7y, 0, this.keySizes['r2 1.75']);// Mold Row 7
-        createKeys(this.keyPropsMold2, ['Num+'], 1531.6, row7y-11.8, 0, this.keySizes['+']);// Mold Row 7
-        createKeys(this.keyPropsMold2, ['NumEnter'], 2437.5, row7y-11.8, 0, this.keySizes['NumEnter']);// Mold Row 7
+        createKeys(this.keyPropsMold2, ['Num+'], 1531.6, row7y+11.8, 0, this.keySizes['+']);// Mold Row 7
+        createKeys(this.keyPropsMold2, ['NumEnter'], 2437.5, row7y+11.8, 0, this.keySizes['NumEnter']);// Mold Row 7
         createKeys(this.keyPropsMold2, ['Space'], 3836, row7y, 0, this.keySizes['r1 6.25']);// Mold Row 7
     }
 
