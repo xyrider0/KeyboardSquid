@@ -8,12 +8,12 @@ import { createKeyRow } from './CanvasDrawer.js';
 
 const aspectDict = {
   'Full': new Rectangle(24.5, 7.3),
-  'TKL': new Rectangle(19.333, 7.1),
-  'FRL': new Rectangle(19.333, 6.06),
-  '75': new Rectangle(17, 7.25),
-  '65': new Rectangle(17, 6.06),
-  '60': new Rectangle(16, 6.06),
-  'Numpad': new Rectangle(5, 7.56)
+  'TKL': new Rectangle(20.333, 7.1),
+  'FRL': new Rectangle(20.5, 6.06),
+  '75': new Rectangle(18, 7.25),
+  '65': new Rectangle(18, 6.06),
+  '60': new Rectangle(17, 6.06),
+  'Numpad': new Rectangle(6, 7.56)
 }
 
 export default function MerchPage(){
@@ -47,8 +47,8 @@ export default function MerchPage(){
   const cropImageNow = () => {
 
       // Create Selection
-      // const overlap = new Rectangle(60, 41); // percentage overlap between keys (Rectangle Class)
-      const overlap = new Rectangle(0, 0);
+      const overlap = new Rectangle(60, 42); // percentage overlap between keys (Rectangle Class)
+      //const overlap = new Rectangle(0, 0);
 
       const canvas = document.createElement('canvas');
       const scaleX = image.naturalWidth / image.width;

@@ -24,6 +24,8 @@ function draw_arrow(ctx, x0, y0, x1, y1, width, head_len) {
   ctx.fill();
 }
 
+
+
 // Draw on HTML canvas the key label
 function createKeyText(keyLabel, ctx, xstart, ystart, fillStyle = '#FFFFFF'){
   ctx.strokeStyle = ctx.fillStyle
@@ -61,6 +63,7 @@ function createKeyText(keyLabel, ctx, xstart, ystart, fillStyle = '#FFFFFF'){
     }
     else if (keyLabel == 'Up'){
       draw_arrow(ctx, xstart, ystart + yoffset[ctx.textBaseline], xstart, ystart + yoffset[ctx.textBaseline] - 1.5 * len, width, head_len)
+
     }
     else if (keyLabel == 'Space'){
       let length = 150
@@ -83,6 +86,217 @@ function createKeyText(keyLabel, ctx, xstart, ystart, fillStyle = '#FFFFFF'){
     }
     else if (keyLabel == 'NumDel'){
       ctx.fillText('.', xstart, ystart)
+    }
+    else if (['LCtrl', 'LAlt', 'RCtrl', 'RAlt', 'Fn'].includes(keyLabel)){
+      ctx.font = fontSizing('wordFont');
+      ctx.fillText((customKeys[keyLabel] ? customKeys[keyLabel] : keyLabel), xstart, ystart + yoffset[ctx.textBaseline])
+    }
+    else if (['Backspace', 'Enter', 'Tab'].includes(keyLabel)){
+      draw_arrow(ctx, xstart-15, ystart + yoffset[ctx.textBaseline], xstart - 15 - 1.5 * len, ystart + yoffset[ctx.textBaseline], width-10, head_len);
+      ctx.beginPath();
+      if(['Tab'].includes(keyLabel)){
+        let h2 = 25;
+        draw_arrow(ctx, xstart+25 - head_len, h2 + ystart + yoffset[ctx.textBaseline], xstart + 25 - head_len + 1.5 * len, h2 + ystart + yoffset[ctx.textBaseline], width-10, head_len);
+        ctx.moveTo(xstart-15 - head_len, ystart + yoffset[ctx.textBaseline] + h2)
+        ctx.lineTo(xstart + 25, ystart + yoffset[ctx.textBaseline]+ h2)
+      }
+      ctx.moveTo(xstart-15, ystart + yoffset[ctx.textBaseline])
+      ctx.lineTo(xstart + 25, ystart + yoffset[ctx.textBaseline])
+      if(keyLabel == 'Enter')
+        {
+          ctx.lineTo(xstart + 25, ystart + 10)
+        }
+
+      ctx.lineWdith=10
+      ctx.stroke()
+    }
+    else if (['RShift', 'LShift'].includes(keyLabel)){
+      let d1 = 12
+      let d2 = 26
+      let htop = -20
+      let hbot = 15
+      let y_orig = ystart + yoffset[ctx.textBaseline] + 10
+
+      ctx.beginPath();
+      ctx.moveTo(xstart-d1, y_orig)
+      ctx.lineTo(xstart-d2, y_orig)
+      ctx.lineTo(xstart, y_orig + htop)
+      ctx.lineTo(xstart + d2, y_orig)
+      ctx.lineTo(xstart + d1, y_orig)
+      ctx.lineTo(xstart + d1, y_orig + hbot)
+      ctx.lineTo(xstart - d1, y_orig + hbot)
+      ctx.lineTo(xstart - d1, y_orig)
+      ctx.miterLimit=5;
+      ctx.lineWidth=5
+      ctx.stroke()
+    }
+    else if (keyLabel == "Music"){
+        let y_orig = ystart + 56
+        let x_orig = xstart - 6
+        let y_adj = width  + 2
+        let w = 15
+        let arc_rad = 9
+        let h = 15
+
+
+        ctx.beginPath()
+        let r = new Path2D()
+        r.arc(x_orig-w + 3, y_orig + h, arc_rad, 0, Math.PI * 2)
+        ctx.fill(r)
+
+        ctx.moveTo(x_orig - w + arc_rad, y_orig + h)
+        ctx.lineTo(x_orig - w + arc_rad,  y_orig - h)
+        ctx.lineTo(x_orig + w + arc_rad, y_orig - h)
+        ctx.lineTo(x_orig + w + arc_rad, y_orig + h)
+        
+        ctx.lineWidth = 6
+        ctx.stroke()
+
+        let r2 = new Path2D()
+        r2.arc(x_orig + w + 3, y_orig + h, arc_rad, 0, Math.PI * 2)
+
+        ctx.fill(r2)
+
+    }
+    else if (keyLabel == "Play"){
+    {
+      let y_orig = ystart + 60
+      let x_orig = xstart - 15
+      let y_adj = width  + 2
+      draw_arrow(ctx, x_orig, y_orig, x_orig+ 1.5 * len, y_orig, width, head_len)
+      
+      ctx.lineWidth = 5
+      ctx.beginPath()
+      ctx.moveTo(x_orig + 2.5 * len, y_orig - y_adj)
+      ctx.lineTo(x_orig + 2.5 * len, y_orig + y_adj)
+      ctx.stroke()
+      ctx.beginPath()
+      ctx.moveTo(x_orig + 3.5 * len, y_orig - y_adj)
+      ctx.lineTo(x_orig + 3.5 * len, y_orig + y_adj)
+      
+      ctx.stroke()
+    }
+    }
+    else if (['VolUp', 'VolDown'].includes(keyLabel)){
+      let orig_x = xstart - 20;
+      let orig_y = ystart + 60
+      let left = 8
+      let right = 20
+      let h1 = 10
+      let h2 = 25
+
+      let r = new Path2D();
+      r.moveTo(orig_x - left, orig_y - h1)
+      r.lineTo(orig_x, orig_y - h1)
+      r.lineTo(orig_x + right, orig_y -h2)
+      r.lineTo(orig_x + right, orig_y + h2)
+      r.lineTo(orig_x, orig_y + h1)
+      r.lineTo(orig_x - left, orig_y + h1)
+      r.lineTo(orig_x - left, orig_y-h1)
+
+      ctx.fill(r)
+
+      ctx.beginPath()
+      ctx.arc(xstart - 5, orig_y, 20, -Math.PI/6, Math.PI/6)
+      ctx.lineWidth = 5
+      ctx.stroke()
+      if(keyLabel == "VolUp"){
+        ctx.beginPath()
+        ctx.arc(xstart - 5, orig_y, 30, -Math.PI/6, Math.PI/6)
+        ctx.stroke()
+        ctx.beginPath()
+        ctx.arc(xstart - 5, orig_y, 40, -Math.PI/6, Math.PI/6)
+        ctx.stroke()
+      }
+
+
+    }
+    else if (keyLabel == 'App'){
+      let y_orig = ystart + yoffset[ctx.textBaseline]
+      let h1 = 42
+      let h2 = 28
+      let h3 = 14
+      let w = 15
+      ctx.beginPath()
+      ctx.moveTo(xstart - w, y_orig + h1)
+      ctx.lineTo(xstart + w, y_orig + h1)
+      ctx.lineTo(xstart + w, y_orig)
+      ctx.lineTo(xstart - w, y_orig)
+      ctx.lineTo(xstart - w, y_orig + h1)
+      ctx.lineTo(xstart + w, y_orig + h1)
+      ctx.moveTo(xstart - w, y_orig + h2)
+      ctx.lineTo(xstart + w, y_orig + h2)
+      ctx.moveTo(xstart - w, y_orig + h3)                                                                                      
+      ctx.lineTo(xstart, y_orig + h3)
+      ctx.lineWidth = 6;
+      ctx.stroke()
+
+      draw_arrow(ctx, xstart + 1.8 * w, y_orig + 0.9 * h1, xstart + 0.2 * w, y_orig + 0.7 * h2, width-8, head_len-3);
+    }
+    else if (keyLabel == 'Win'){
+      let y_orig = ystart + yoffset[ctx.textBaseline] + 20
+      let w1 = 22
+      let w2 = 26
+      let h1 = 20
+      let h2 = 27
+      let lwidth = 1.75;
+      let slope = (h2-h1)/(w1 + w2)
+
+
+      let r1 = new Path2D();
+      r1.moveTo(xstart - w1, y_orig - lwidth)
+      r1.lineTo(xstart - w1, y_orig - h1)
+      r1.lineTo(xstart - lwidth, y_orig - h1 - slope * (w1 - lwidth))
+      r1.lineTo(xstart - lwidth, y_orig - lwidth)
+      r1.lineTo(xstart - w1, y_orig - lwidth)
+      r1.closePath()
+      ctx.fill(r1)                                                                                                        
+
+      let r2 = new Path2D();
+      r2.moveTo(xstart - w1, y_orig + lwidth)
+      r2.lineTo(xstart - w1, y_orig + h1)
+      r2.lineTo(xstart - lwidth, y_orig + h1 + slope * (w1 - lwidth))
+      r2.lineTo(xstart - lwidth, y_orig + lwidth)
+      r2.lineTo(xstart - w1, y_orig + lwidth)
+      r2.closePath()
+      ctx.fill(r2)
+
+      let r3 = new Path2D();
+      r3.moveTo(xstart + w2, y_orig + lwidth)
+      r3.lineTo(xstart + w2, y_orig + h2)
+      r3.lineTo(xstart + lwidth, y_orig + h2 - slope * (w2 - lwidth))
+      r3.lineTo(xstart + lwidth, y_orig + lwidth)
+      r3.lineTo(xstart + w2, y_orig + lwidth)
+      r3.closePath()
+      ctx.fill(r3)
+
+      let r4 = new Path2D();
+      r4.moveTo(xstart + w2, y_orig - lwidth)
+      r4.lineTo(xstart + w2, y_orig - h2)
+      r4.lineTo(xstart + lwidth, y_orig - h2 + slope * (w2 - lwidth))
+      r4.lineTo(xstart + lwidth, y_orig - lwidth)
+      r4.lineTo(xstart + w2, y_orig - lwidth)
+      r4.closePath()
+      ctx.fill(r4)
+    }
+    else if (['Caps', 'Caps2'].includes(keyLabel)){
+      
+      let d1 = 12
+      let d2 = 26
+      let htop = 20
+      let hbot = 15
+      let y_orig = ystart + yoffset[ctx.textBaseline] + 10
+      ctx.beginPath();
+      ctx.moveTo(xstart+d1, y_orig)
+      ctx.lineTo(xstart+d2, y_orig)
+      ctx.lineTo(xstart, y_orig + htop)
+      ctx.lineTo(xstart - d2, y_orig)
+      ctx.lineTo(xstart - d1, y_orig)
+      ctx.lineTo(xstart - d1, y_orig - hbot)
+      ctx.lineTo(xstart + d1, y_orig - hbot)
+      ctx.lineTo(xstart + d1, y_orig)
+      ctx.lineWidth=5
+      ctx.stroke()
     }
     else{
       //console.log('Special Key ' + keyLabel + ' not found!')
@@ -127,10 +341,12 @@ function createKeyText(keyLabel, ctx, xstart, ystart, fillStyle = '#FFFFFF'){
 }
 
 function fontSizing(textToPrint){
-  const wordFont='48px serif'
-  const specialFont = '54px serif'
-  const pairFont = '54px serif'
-  const letterFont = '66px serif'
+  const style = ""
+  const fontfamily = "garamond"
+  const wordFont= style + '48px ' + fontfamily
+  const specialFont = style + '54px ' + fontfamily
+  const pairFont = style + '58px ' + fontfamily
+  const letterFont = style + '66px ' + fontfamily
   
   if(textToPrint.length == 1){
     return letterFont
