@@ -1,0 +1,21 @@
+.imageSample {
+    display: block;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    object-fit: contain;
+}
+
+.imageCaption{
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+
+.imagePreview{
+    display: block;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    object-fit: fill;
+}

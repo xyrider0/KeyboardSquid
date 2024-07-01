@@ -1,0 +1,19 @@
+.title{
+    margin-top: 10rem;
+    margin-bottom:2rem;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.item{
+    font-size: 2rem;
+}
+
+.desc{
+    font-size: 1.75rem;
+    text-align: left;
+}
+
+.accordion-button{
+    font-size: 50px;
+}
