@@ -303,6 +303,37 @@ export default function MerchPage(){
       setMold2Output(mold.createMold(ctx.canvas, mold.keyPropsMold2, imageDataDic));
     }
  
+  const sendToS3 = () => {
+
+  //   const files = [
+  //     keycapOutput,
+  //     mold1Output,
+  //     mold2Output
+  //   ]
+
+  //   // get secure url from our server
+  //   const {url} = fetch("/s3Url").then(res => res.json())
+
+  //   for(file in files){
+  //     // post the image directly to the s3 bucket
+  //     fetch(url, {
+  //       method: "PUT",
+  //       headers: {
+  //         "Content-Type": "multipart/form-data"
+  //       },
+  //       body: mold1Output
+  //     })
+  //   }
+
+
+  //   const imageUrl = url.split('?')[0]
+  //   console.log(imageUrl)
+
+  //   //post request to server to store extra data (guid ^_^)
+
+
+  }
+
   return (
       <div className="MerchPage">
           <center>
@@ -351,6 +382,7 @@ export default function MerchPage(){
                     <img src={keycapOutput} className={styles.imageSample}/>
                     <img src={mold1Output} className={styles.imagePreview}/>
                     <img src={mold2Output} className={styles.imagePreview}/>
+                    {/* <button onClick={sendToS3}> Add to Cart </button> */}
                   </div>
                     )}
               </div>

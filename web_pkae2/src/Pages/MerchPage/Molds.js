@@ -53,8 +53,8 @@ export default class CherryProfileMold{
         this.keyPropsMold2 = {};
 
         // Adjustments based on testing
-        const moldspacing = 471;
-        const mold1startX = 627-5-17;
+        const moldspacing = 471-3.245;
+        const mold1startX = 605+8;
         const heightadj = 24
 
         // Mold 1 Properties
@@ -71,8 +71,8 @@ export default class CherryProfileMold{
         const mold2startX = 548-5;
         // Mold 2 Properties
         
-        const row1spacing = 485.125;
-        const row1y = 534+1
+        const row1spacing = 485.075;
+        const row1y = 534+0.5
         createKeys(this.keyPropsMold2, ['Esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8'], mold2startX, row1y, row1spacing, this.keySizes['r4']); // Mold Row 1
 
         const row2_3spacing = 430.33+5/9;
